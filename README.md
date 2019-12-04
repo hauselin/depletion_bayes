@@ -5,7 +5,7 @@ This repository contains stuff for the following manuscript: **"Strong effort ma
 
 ### Materials
 
-### Pregistration
+### Pregistrations
 
 ### Scripts
 
