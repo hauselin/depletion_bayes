@@ -9,7 +9,7 @@ This repository contains stuff for the following manuscript: **"Strong effort ma
 
 * [Study 1](https://osf.io/hhn3s/), [Study 2](https://osf.io/xp7hn/), [Study 3](https://osf.io/6p8t4/), [Study 4](https://osf.io/6sncm/)
 
-* [Exploratory preregistered analyses (diffusion model for conflict tasks)](osf.io/7qcxa)
+* [Exploratory preregistered analyses (diffusion model for conflict tasks)](https://osf.io/7qcxa)
 
 ### Scripts
 
