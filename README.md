@@ -1,6 +1,6 @@
 This repository contains stuff for the following manuscript: **"Strong effort manipulations reduce response caution: A preregistered reinvention of the ego-depletion paradigm"**
 
-If you're planning to run the analysis scripts in the Code directory, I strongly recommend you **clone or download this entire repository**.
+If you're planning to run the analysis scripts in the Code directory, I strongly recommend you **clone or download this ENTIRE repository**.
 
 ### Data
 
