@@ -1,30 +1,11 @@
-# done, Last modified by Hause Lin 19-11-22 22:16 hauselin@gmail.comm
-
-library(tidyverse); library(data.table); library(dtplyr); library(glue); library(brms); library(broom); library(sjstats); library(broom.mixed); library(bayesplot)
-
-prior_informed_cohensd <- 0.28 # cohen's d
-nchains <- 5
-samples <- 6000
-
+library(tidyverse); library(data.table); library(glue); library(brms); library(broom); library(bayesplot)
 source("helpfuncs.R")
 
-ddm <- fread("./Gather data/Data/ddm.csv")
-stroop <- fread("./Gather data/Data/stroop.csv")
-# code
-ddm[condition == "control", conditionEC := -0.5]
-ddm[condition == "deplete", conditionEC := 0.5]
-stroop[condition == "control", conditionEC := -0.5]
-stroop[condition == "deplete", conditionEC := 0.5]
+prior_informed_cohensd <- 0.28 # cohen's d
+nchains <- 20
+samples <- 2000
 
-ddm[congruency == "congruent", congruentEC := -0.5]
-ddm[congruency == "incongruent", congruentEC := 0.5]
-stroop[congruency == "congruent", congruentEC := -0.5]
-stroop[congruency == "incongruent", congruentEC := 0.5]
-
-interfere <- fread("./Gather data/Data/interference.csv")
-interfere$conditionEC <- ifelse(interfere$condition == "control", -0.5, 0.5)
-
-ratings <- fread("./Gather data/Data/ratings.csv")
+ratings <- fread("../Data/ratings.csv")
 ratings$conditionEC <- ifelse(ratings$condition == "control", -0.5, 0.5)
 ratings[, bored := bored / 10]
 ratings[, effort := effort / 10]
@@ -38,7 +19,6 @@ ratings[, effort := effort - mean(effort, na.rm = T), by = .(study, pNo)]
 ratings[, fatigue := fatigue - mean(fatigue, na.rm = T), by = .(study, pNo)]
 ratings[, frustrate := frustrate - mean(frustrate, na.rm = T), by = .(study, pNo)]
 ratings[, mentaldemand := mentaldemand - mean(mentaldemand, na.rm = T), by = .(study, pNo)]
-
 
 
 
@@ -90,7 +70,6 @@ mbayes_drift_frustrate_results <- lapply(1:5, function(x) summarizebrms(mbayes_d
 
 manuscriptformat <- data.table(results = sapply(1:5, function(x) mbayes_drift_frustrate_results[[x]][effect == "manuscriptformat", result]))
 manuscriptformat
-mbayes_drift_frustrate_results[[5]]
 
 tableformat <- lapply(1:5, function(x) formattable(mbayes_drift_frustrate_results[[x]]))
 tableformat
@@ -204,7 +183,6 @@ mbayes_drift_bored_results <- lapply(1:5, function(x) summarizebrms(mbayes_drift
 
 manuscriptformat <- data.table(results = sapply(1:5, function(x) mbayes_drift_bored_results[[x]][effect == "manuscriptformat", result]))
 manuscriptformat
-mbayes_drift_bored_results[[5]]
 
 tableformat <- lapply(1:5, function(x) formattable(mbayes_drift_bored_results[[x]]))
 tableformat
@@ -306,7 +284,6 @@ mbayes_drift_fatigue_results <- lapply(1:5, function(x) summarizebrms(mbayes_dri
 
 manuscriptformat <- data.table(results = sapply(1:5, function(x) mbayes_drift_fatigue_results[[x]][effect == "manuscriptformat", result]))
 manuscriptformat
-mbayes_drift_fatigue_results[[5]]
 
 tableformat <- lapply(1:5, function(x) formattable(mbayes_drift_fatigue_results[[x]]))
 tableformat
@@ -320,21 +297,7 @@ p
 write_rds(p, "Figures/drift_fatigue.rds")
 
 
-# prior predictive checks (revision1)
-# mbayes_drift_fatigue_priorpredictive <- brm(v ~ fatigue + (1 | study/pNo), data = ratings, cores = 5, chains = 5, sample_prior = "only", save_all_pars = TRUE, prior = priors, iter = samples)
-# mbayes_drift_fatigue_priorpredictive
-# tempplot <- plot(mbayes_drift_fatigue_priorpredictive)
-# ggsave(filename = "./Figures/mbayes_drift_fatigue_priorpredictive_plot.pdf", plot = tempplot[[1]], width = 8, height = 8)
-# mbayes_drift_fatigue_priorpredictive_draws <- posterior_predict(mbayes_drift_fatigue_priorpredictive, draws = 25)
-#
-# # ppc_dens_overlay(ratings[, v], mbayes_drift_fatigue_priorpredictive_draws[1:100,])
-# # ppc_freqpoly_grouped(ratings[, a], mbayes_drift_fatigue_priorpredictive_draws[101:120,], group = ratings$conditionEC) + yaxis_text()
-# ppc_violin_grouped(ratings[, v], mbayes_drift_fatigue_priorpredictive_draws[101:120,], group = ratings$conditionEC, y_draw = "both") + labs(x = "Condition (low vs high demand)")
-# ggsave(filename = "./Figures/mbayes_drift_fatigue_priorpredictive_overlay.pdf", width = 5, height = 5)
-#
-# me_loss_prior1 <- marginal_effects(mbayes_drift_fatigue_priorpredictive, re_formula = NULL, method = "predict")
-# plot(me_loss_prior1, points = TRUE, plot = TRUE, ncol = 5, theme = theme_bw())
-# ggsave(filename = "./Figures/mbayes_drift_fatigue_priorpredictive_marginaleffects.pdf", width = 7, height = 7)
+
 
 # NULL
 prior_coef <- expectedBeta(expected_d = -prior_informed_cohensd,
@@ -429,7 +392,6 @@ mbayes_drift_mentaldemand_results <- lapply(1:5, function(x) summarizebrms(mbaye
 
 manuscriptformat <- data.table(results = sapply(1:5, function(x) mbayes_drift_mentaldemand_results[[x]][effect == "manuscriptformat", result]))
 manuscriptformat
-mbayes_drift_mentaldemand[[5]]
 
 tableformat <- lapply(1:5, function(x) formattable(mbayes_drift_mentaldemand_results[[x]]))
 tableformat
@@ -531,7 +493,6 @@ mbayes_drift_effort_results <- lapply(1:5, function(x) summarizebrms(mbayes_drif
 
 manuscriptformat <- data.table(results = sapply(1:5, function(x) mbayes_drift_effort_results[[x]][effect == "manuscriptformat", result]))
 manuscriptformat
-mbayes_drift_effort_results[[5]]
 
 tableformat <- lapply(1:5, function(x) formattable(mbayes_drift_effort_results[[x]]))
 tableformat

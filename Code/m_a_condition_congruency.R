@@ -11,6 +11,9 @@ ddm[condition == "deplete", conditionEC := 0.5]
 ddm[congruency == "congruent", congruentEC := -0.5]
 ddm[congruency == "incongruent", congruentEC := 0.5]
 
+
+
+
 prior_coef <- expectedBeta(expected_d = -prior_informed_cohensd,
                            sd1 = ddm[condition == "control", sd(a, na.rm = T)], # REMEMBER TO CHANGE VARIALBE!
                            sd2 = ddm[condition == "deplete", sd(a, na.rm = T)])

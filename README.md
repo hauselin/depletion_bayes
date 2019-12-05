@@ -8,7 +8,7 @@ If you have questions related to anything in this repository, raise an issue [he
 
 ### Code
 
-* Analysis code/scripts
+* Analysis code/scripts (written in R version 3.6.1 2019-07-05)
 
 ### Data
 

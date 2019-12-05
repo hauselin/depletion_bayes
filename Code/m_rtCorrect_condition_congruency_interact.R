@@ -1,38 +1,15 @@
-# done, Last modified by Hause Lin 19-11-22 23:02 hauselin@gmail.com
-
-library(tidyverse); library(data.table); library(dtplyr); library(glue); library(brms); library(broom); library(sjstats); library(broom.mixed)
-
-prior_informed_cohensd <- 0.28 # cohen's d
-nchains <- 5
-samples <- 6000
-
-
+library(tidyverse); library(data.table); library(glue); library(brms); library(broom); library(bayesplot)
 source("helpfuncs.R")
 
-ddm <- fread("./Gather data/Data/ddm.csv")
+prior_informed_cohensd <- 0.28 # cohen's d
+nchains <- 20
+samples <- 2000
+
 stroop <- fread("../Data/stroop.csv")
-# code
-ddm[condition == "control", conditionEC := -0.5]
-ddm[condition == "deplete", conditionEC := 0.5]
 stroop[condition == "control", conditionEC := -0.5]
 stroop[condition == "deplete", conditionEC := 0.5]
-
-ddm[congruency == "congruent", congruentEC := -0.5]
-ddm[congruency == "incongruent", congruentEC := 0.5]
 stroop[congruency == "congruent", congruentEC := -0.5]
 stroop[congruency == "incongruent", congruentEC := 0.5]
-
-interfere <- fread("./Gather data/Data/interference.csv")
-interfere$conditionEC <- ifelse(interfere$condition == "control", -0.5, 0.5)
-
-ratings <- fread("./Gather data/Data/ratings.csv")
-ratings$conditionEC <- ifelse(ratings$condition == "control", -0.5, 0.5)
-ratings[, bored := bored / 10]
-ratings[, effort := effort / 10]
-ratings[, fatigue := fatigue / 10]
-ratings[, frustrate := frustrate / 10]
-ratings[, mentaldemand := mentaldemand / 10]
-
 
 
 
@@ -74,7 +51,6 @@ mbayes_rtCorrect_condition_congruency_interact_results <- lapply(1:5, function(x
 
 manuscriptformat <- data.table(results = sapply(1:5, function(x) mbayes_rtCorrect_condition_congruency_interact_results[[x]][effect == "manuscriptformat", result]))
 manuscriptformat
-mbayes_rtCorrect_condition_congruency_interact_results[[5]]
 
 tableformat <- lapply(1:5, function(x) formattable(mbayes_rtCorrect_condition_congruency_interact_results[[x]]))
 tableformat
@@ -97,9 +73,6 @@ mbayes_rtCorrect_condition_congruency_interact_results[[5]]
 tableformat <- lapply(1:5, function(x) formattable(mbayes_rtCorrect_condition_congruency_interact_results[[x]]))
 tableformat
 
-# R2 for model
-mbayes_rtCorrect_condition_congruency_interact[[5]]
-brms::bayes_R2(mbayes_rtCorrect_condition_congruency_interact[[5]])
 
 
 
@@ -130,7 +103,7 @@ get_prior(rtCorrect ~ conditionEC + (1 | study/pNo), stroop[study == 1])
 priors <- c(set_prior("normal(0, 1)", class = "Intercept"),
             set_prior("normal(0, 1)", class = "b"),
             # set_prior(glue("normal(0, {abs(prior_coef/2)})"), class = "b", coef = "conditionEC"),
-            set_prior(glue("normal(0, {abs(prior_coef/2)})"), class = "b", coef = "conditionEC:congruentEC"),
+            set_prior(glue("normal(0, {abs(prior_coef/2)})"), class = "b", coef = "congruentEC:conditionEC"),
             set_prior("normal(0, 1)", class = "sd"),
             set_prior("normal(0, 1)", class = "sigma")) %>% print()
 

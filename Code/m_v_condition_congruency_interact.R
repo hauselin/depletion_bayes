@@ -1,50 +1,35 @@
-library(tidyverse); library(data.table); library(dtplyr); library(lme4); library(lmerTest); library(ggbeeswarm); library(cowplot); library(glue); library(brms); library(broom); library(sjstats)
-
-prior_informed_cohensd <- 0.28 # cohen's d
-nchains <- 40
-
+library(tidyverse); library(data.table); library(glue); library(brms); library(broom); library(bayesplot)
 source("helpfuncs.R")
 
-ddm <- fread("./Gather data/Data/ddm.csv")
-stroop <- fread("./Gather data/Data/stroop.csv")
-# code
+prior_informed_cohensd <- 0.28 # cohen's d
+nchains <- 20
+samples <- 2000
+
+ddm <- fread("../Data/ddm.csv")
 ddm[condition == "control", conditionEC := -0.5]
 ddm[condition == "deplete", conditionEC := 0.5]
-stroop[condition == "control", conditionEC := -0.5]
-stroop[condition == "deplete", conditionEC := 0.5]
-
 ddm[congruency == "congruent", congruentEC := -0.5]
 ddm[congruency == "incongruent", congruentEC := 0.5]
-stroop[congruency == "congruent", congruentEC := -0.5]
-stroop[congruency == "incongruent", congruentEC := 0.5]
 
-interfere <- fread("./Gather data/Data/interference.csv")
-interfere$conditionEC <- ifelse(interfere$condition == "control", -0.5, 0.5)
 
-ratings <- fread("./Gather data/Data/ratings.csv")
-ratings$conditionEC <- ifelse(ratings$condition == "control", -0.5, 0.5)
-ratings[, bored := bored / 10]
-ratings[, effort := effort / 10]
-ratings[, fatigue := fatigue / 10]
-ratings[, frustrate := frustrate / 10]
-ratings[, mentaldemand := mentaldemand / 10]
 
-prior_coef <- expectedBeta(expected_d = -prior_informed_cohensd, 
+
+prior_coef <- expectedBeta(expected_d = -prior_informed_cohensd,
                            sd1 = ddm[condition == "control", sd(v, na.rm = T)], # REMEMBER TO CHANGE VARIALBE!
                            sd2 = ddm[condition == "deplete", sd(v, na.rm = T)])
 prior_coef
 get_prior(v ~ conditionEC + (1 | study/pNo), ddm[study == 1])
-priors <- c(set_prior("normal(0, 1)", class = "Intercept"), 
-            set_prior("normal(0, 1)", class = "b"), 
+priors <- c(set_prior("normal(0, 1)", class = "Intercept"),
+            set_prior("normal(0, 1)", class = "b"),
             set_prior(glue("normal(0, {abs(prior_coef/2)})"), class = "b", coef = "conditionEC"),
             set_prior(glue("normal(0, {abs(prior_coef/2)})"), class = "b", coef = "conditionEC:congruentEC"),
-            set_prior("normal(0, 1)", class = "sd"), 
+            set_prior("normal(0, 1)", class = "sd"),
             set_prior("normal(0, 1)", class = "sigma")) %>% print()
 
 # fit model for each study (2-level model)
 mbayes_drift_condition_congruency_interact <- vector(mode = "list", length = 5)
 for (s in 1:4) {
-    mbayes_drift_condition_congruency_interact[[s]] <- brm(v ~ conditionEC * congruentEC + (1 | pNo), data = ddm[study == s], 
+    mbayes_drift_condition_congruency_interact[[s]] <- brm(v ~ conditionEC * congruentEC + (1 | pNo), data = ddm[study == s],
                              # family = lognormal(),
                              cores = nchains, chains = nchains, sample_prior = TRUE, save_all_pars = FALSE, prior = priors, iter = 2000,
                              file = glue("brms_models/mbayes_drift_condition_congruency_interact_study{s}"),
@@ -52,7 +37,7 @@ for (s in 1:4) {
 }
 
 # fit 3-level model
-mbayes_drift_condition_congruency_interact[[5]] <- brm(v ~ conditionEC * congruentEC + (1 | study/pNo), data = ddm, 
+mbayes_drift_condition_congruency_interact[[5]] <- brm(v ~ conditionEC * congruentEC + (1 | study/pNo), data = ddm,
                              # family = lognormal(),
                              cores = nchains, chains = nchains, sample_prior = TRUE, save_all_pars = FALSE, prior = priors, iter = 2000,
                              file = "brms_models/mbayes_drift_condition_congruency_interact_study_all",
