@@ -1,10 +1,10 @@
 # README
 
-This repository contains stuff for the following manuscript: **"Strong effort manipulations reduce response caution: A preregistered reinvention of the ego-depletion paradigm"**
+This repository contains stuff for the following paper: **"Strong effort manipulations reduce response caution: A preregistered reinvention of the ego-depletion paradigm"**
 
 If you're planning to run the analysis scripts in the Code directory, I strongly recommend you **clone or download this ENTIRE repository**.
 
-If you have questions related to anything in this repository, raise an issue [here](https://github.com/hauselin/depletion_bayes/issues).
+If you have questions related to anything in this repository, raise an issue [here](https://github.com/hauselin/depletion_bayes/issues). If you have questions related to the results, read the paper first.
 
 ### Code
 

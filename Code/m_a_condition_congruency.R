@@ -1,36 +1,15 @@
-# done, Last modified by Hause Lin 19-11-22 16:30 hauselin@gmail.com
-
-library(tidyverse); library(data.table); library(dtplyr); library(lme4); library(lmerTest); library(ggbeeswarm); library(cowplot); library(glue); library(brms); library(broom); library(sjstats); library(bayesplot)
-
-prior_informed_cohensd <- 0.28 # cohen's d
-nchains <- 5
-samples <- 6000
-
+library(tidyverse); library(data.table); library(glue); library(brms); library(broom); library(bayesplot)
 source("helpfuncs.R")
 
-ddm <- fread("./Gather data/Data/ddm.csv")
-stroop <- fread("./Gather data/Data/stroop.csv")
-# code
+prior_informed_cohensd <- 0.28 # cohen's d
+nchains <- 20
+samples <- 2000
+
+ddm <- fread("../Data/ddm.csv")
 ddm[condition == "control", conditionEC := -0.5]
 ddm[condition == "deplete", conditionEC := 0.5]
-stroop[condition == "control", conditionEC := -0.5]
-stroop[condition == "deplete", conditionEC := 0.5]
-
 ddm[congruency == "congruent", congruentEC := -0.5]
 ddm[congruency == "incongruent", congruentEC := 0.5]
-stroop[congruency == "congruent", congruentEC := -0.5]
-stroop[congruency == "incongruent", congruentEC := 0.5]
-
-interfere <- fread("./Gather data/Data/interference.csv")
-interfere$conditionEC <- ifelse(interfere$condition == "control", -0.5, 0.5)
-
-ratings <- fread("./Gather data/Data/ratings.csv")
-ratings$conditionEC <- ifelse(ratings$condition == "control", -0.5, 0.5)
-ratings[, bored := bored / 10]
-ratings[, effort := effort / 10]
-ratings[, fatigue := fatigue / 10]
-ratings[, frustrate := frustrate / 10]
-ratings[, mentaldemand := mentaldemand / 10]
 
 prior_coef <- expectedBeta(expected_d = -prior_informed_cohensd,
                            sd1 = ddm[condition == "control", sd(a, na.rm = T)], # REMEMBER TO CHANGE VARIALBE!
@@ -62,21 +41,20 @@ mbayes_bound_condition_congruency[[5]] <- brm(a ~ conditionEC + congruentEC + (1
 
 # summarize model results
 mbayes_bound_condition_congruency_results <- lapply(1:5, function(x) summarizebrms(mbayes_bound_condition_congruency[[x]], conf.method = "HPDinterval", effect = "conditionEC"))
-
 manuscriptformat <- data.table(results = sapply(1:5, function(x) mbayes_bound_condition_congruency_results[[x]][effect == "manuscriptformat", result]))
 manuscriptformat
-
 tableformat <- lapply(1:5, function(x) formattable(mbayes_bound_condition_congruency_results[[x]]))
 tableformat
-
 
 mbayes_bound_condition_congruency_results <- lapply(1:5, function(x) summarizebrms(mbayes_bound_condition_congruency[[x]], conf.method = "HPDinterval", effect = "congruentEC"))
-
 manuscriptformat <- data.table(results = sapply(1:5, function(x) mbayes_bound_condition_congruency_results[[x]][effect == "manuscriptformat", result]))
 manuscriptformat
 
 tableformat <- lapply(1:5, function(x) formattable(mbayes_bound_condition_congruency_results[[x]]))
 tableformat
+
+
+
 
 
 # NULL MODEL (no condition)
@@ -105,6 +83,10 @@ mbayes_bound_condition_congruency_nocondition[[5]] <- brm(a ~ congruentEC + (1 |
 
 # bridge sampling bayes factors
 compute_bfs(mbayes_bound_condition_congruency, mbayes_bound_condition_congruency_nocondition)
+
+
+
+
 
 
 # NULL MODEL (no congruency)

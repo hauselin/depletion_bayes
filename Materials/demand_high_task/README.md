@@ -1,4 +1,4 @@
-# High demand task: Symbol Counting Task
+# High demand task: symbol counting task
 
 * BigSquare.png, SmallSquare.png are required to run `SymbolCounting.iqx`
 *  `SymbolCounting.iqx`: 10-minute task ([Inquisit](https://www.millisecond.com/) code `SymbolCounting.iqx` for high demand experimental manipulation; symbol counting task)

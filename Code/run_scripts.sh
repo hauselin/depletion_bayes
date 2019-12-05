@@ -21,10 +21,15 @@ date +'%y-%m-%d %H:%M:%S'
 module load R/3.5.3
 
 # runscripts
-Rscript m_a_condition_congruency.R
-Rscript m_v_condition_congruency.R
-# Rscript m_a_phenom.R
-# Rscript m_v_phenom.R
+m_a_condition_congruency.R
+m_a_condition_congruency_interact.R
+m_a_phenom.R
+m_acc_condition_congruency_interact.R
+m_phenom_condition.R
+m_rtCorrect_condition_congruency_interact.R
+m_v_condition_congruency.R
+m_v_condition_congruency_interact.R
+m_v_phenom.R
 
 # finish
 date +'%y-%m-%d %H:%M:%S'
