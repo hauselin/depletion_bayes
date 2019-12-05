@@ -12,5 +12,3 @@ This repository contains stuff for the following manuscript: **"Strong effort ma
 * [Exploratory preregistered analyses (diffusion model for conflict tasks)](https://osf.io/7qcxa)
 
 ### Scripts
-
-### Supplement
