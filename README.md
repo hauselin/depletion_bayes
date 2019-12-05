@@ -8,7 +8,7 @@ If you're planning to run the analysis scripts in the Code directory, I strongly
 
 ### Materials
 
-* 
+* Study materials: low and high demand tasks for experiment	
 
 ### Pregistrations
 
