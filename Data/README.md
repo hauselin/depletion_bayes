@@ -10,21 +10,21 @@ pNo: participant id
 
 condition: experimental condition
 
-​    control: low demand condition
+​        control: low demand condition
 
-​    deplete: high demand condition
+​        deplete: high demand condition
 
 congruency: stroop trial type congruency
 
-​    congruent: congruent stroop trials
+​        congruent: congruent stroop trials
 
-​    incongruent: incongruent stroop trials
+​        incongruent: incongruent stroop trials
 
 sessionOrder: order of experimental condition assignment for participant
 
-​    control-deplete: control (low demand) then deplete (high demand)
+​        control-deplete: control (low demand) then deplete (high demand)
 
-​    deplete-control: deplete (high demand) then control (low demand) 
+​        deplete-control: deplete (high demand) then control (low demand) 
 
 a: EZ-diffusion boundary parameter 
 
