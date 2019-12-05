@@ -10,7 +10,7 @@ pNo: participant id
 
 condition: experimental condition
 
-​        control: low demand condition
+​                control: low demand condition
 
 ​        deplete: high demand condition
 
