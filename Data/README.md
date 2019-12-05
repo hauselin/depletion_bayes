@@ -10,15 +10,13 @@ pNo: participant id
 
 condition: experimental condition
 
-​                control: low demand condition
-
-​        deplete: high demand condition
+* control: low demand condition
+* deplete: high demand condition
 
 congruency: stroop trial type congruency
 
-​        congruent: congruent stroop trials
-
-​        incongruent: incongruent stroop trials
+* congruent: congruent stroop trials
+* incongruent: incongruent stroop trials
 
 sessionOrder: order of experimental condition assignment for participant
 
