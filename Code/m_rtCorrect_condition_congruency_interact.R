@@ -10,7 +10,7 @@ samples <- 6000
 source("helpfuncs.R")
 
 ddm <- fread("./Gather data/Data/ddm.csv")
-stroop <- fread("./Gather data/Data/stroop.csv")
+stroop <- fread("../Data/stroop.csv")
 # code
 ddm[condition == "control", conditionEC := -0.5]
 ddm[condition == "deplete", conditionEC := 0.5]
