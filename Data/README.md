@@ -2,7 +2,7 @@
 
 ## ddm.csv
 
-**EZ-ddm (EZ-drift-diffusion model) dataset**
+EZ-ddm (EZ-drift-diffusion model) dataset**
 
 study: study number (1, 2, 3, 4)
 
@@ -60,32 +60,6 @@ mentaldemand: mental demand rating
 
 session: session number (1, 2)
 
-## stroop_single_trial.csv
-
-**Single-trial stroop task data**
-
-pNo: participant id
-
-condition: experimental condition
-
-* control: low demand condition
-* deplete: high demand condition
-
-study: study number (1, 2, 3, 4)  
-
-trialnum: trial number
-
-congruency: stroop trial type congruency
-
-* congruent: congruent stroop trials
-* incongruent: incongruent stroop trials
-
-rt: reaction time (seconds)
-
-acc: accuracy (proprotion correct)
-
-rtCorrect: reaction time (seconds) for correct trials
-
 ## stroop.csv
 
 **Stroop task data**
@@ -121,3 +95,28 @@ rtCorrect: reaction time (seconds) for correct trials
 
 session: session number (1, 2)
 
+## stroop_single_trial.csv
+
+**Single-trial stroop task data**
+
+pNo: participant id
+
+condition: experimental condition
+
+* control: low demand condition
+* deplete: high demand condition
+
+study: study number (1, 2, 3, 4)  
+
+trialnum: trial number
+
+congruency: stroop trial type congruency
+
+* congruent: congruent stroop trials
+* incongruent: incongruent stroop trials
+
+rt: reaction time (seconds)
+
+acc: accuracy (proprotion correct)
+
+rtCorrect: reaction time (seconds) for correct trials
