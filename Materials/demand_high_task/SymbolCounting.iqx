@@ -1,0 +1,959 @@
+﻿/windowsize = (50, 50)
+<defaults>
+/canvasaspectratio = (4, 3)
+</defaults>
+
+<monkey>
+/latencydistribution = normal(10, 1)
+</monkey>
+
+
+<values>
+/showcorrectcounts = false
+/fixationcrosspresentation = 250
+/cardpresentationduration = 800
+/skippractice = false
+/maxtrials = 60
+/mincorrectbored = 45
+/mincorrectdeplete = 35
+/completioncode = 0
+
+/trialno = 0
+/overalltrial = 0
+/exptimeseconds = 0
+/symbol1_label = "BIG square"
+/symbol2_label = "SMALL square"
+/pictureheight = 20%
+/responseduration = 12000
+/feedbackduration = 3000
+/restduration_regular = 1000
+/restduration_long = 1000
+/showfeedback = 1
+</values>
+
+
+
+
+***************************************************************************************
+*********************************************
+Editable Stimuli
+*********************************************
+***************************************************************************************
+<item symbols>
+/1 = "BigSquare.png"
+/2 = "SmallSquare.png"
+</item>
+
+<item feedback>
+/1 = "correct <%values.symbol1_label%> count: <%values.countsymbol1%>
+
+correct <%values.symbol2_label%> count: <%values.countsymbol2%>"
+</item>
+***************************************************************************************
+*********************************************
+Editable Instructions
+*********************************************
+***************************************************************************************
+<instruct>
+/windowsize = (80%, 80%)
+/fontstyle = ("Arial", 3.00%, false, false, false, false, 5, 1)
+/txcolor = (black)
+/finishlabel = "Press SPACE to continue"
+/nextkey = (57)
+/nextlabel = "Press SPACE to continue"
+/prevkey = (48)
+/prevlabel = "Press B to go back"
+</instruct>
+
+
+<page intro>
+^You will be presented a sequence of SMALL and BIG squares, one after the other, and you will be asked to keep a count of each of the two types of squares.
+^^Rehearse the count of BOTH square types whenever the next square gets presented.
+^^Each square will be separated from the next by a brief presentation of a fixation cross in the middle of the screen.
+^^After all squares have been presented to you, you will be able to select the appropriate counts
+for each square type from a variety of options. You will have <%values.responseduration/1000%>s to do so.
+Once you made your decisions, the computer will tell you the correct counts.
+</page>
+
+<page practice>
+^This is a practice sequence.
+
+^^Remember:
+^* you will be presented a sequence of SMALL and BIG squares
+^* keep a count of how many squares there are for each of the two types of squares
+^* rehearse BOTH counts whenever the next square is presented
+^* after all squares have been presented, you will have <%values.responseduration/1000%>s to select the correct counts
+^* afterwards the computer will tell you the correct counts.
+</page>
+
+
+<page taskintro1>
+^You are about to start the actual task. No feedback will be provided from now on.
+</page>
+
+<page taskintro2>
+^The task has been designed such that if you perform well, you'll finish the task more quickly, so try to pay attention and work hard.
+</page>
+
+<page taskintro3>
+^Remember:
+^* you will be presented a sequence of SMALL and BIG squares
+^* keep a count of how many squares there are for each of the two types of squares
+^* rehearse BOTH counts whenever the next square is presented
+^* after all squares have been presented, you will have <%values.responseduration/1000%>s to select the correct counts
+</page>
+
+<page debrief>
+^Debrief and study rationale
+^^Thank you for participating in the study. We are grateful for your participation and we hope that you found the experience interesting.
+^^The purpose of the study was to evaluate two different cognitive tasks. Half of the participants in the study performed a difficult task (counting the number of small and black squares separately) while the other half performed an easier but boring task (counting the total number of squares). We wanted to see how people experience these two tasks (e.g., level of effort and boredom etc.) and the results from this study will then be used to design future experiments.
+^^We thank you for your participation. If you have any further questions, please feel free to contact Hause Lin at hause.lin@mail.utoronto.ca or Blair Saunders at blairsaunders01@gmail.com.
+</page>
+
+<page taskend>
+^You've completed this task. 
+^^You're going to complete another task now.
+</page>
+
+***************************************************************************************
+*********************************************
+Editable Lists
+*********************************************
+***************************************************************************************
+
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	DATA: this section contains data file information
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+********************
+raw data
+********************
+date, time, subject, group:			date and time script was run with the current subject/groupnumber
+blockcode, blocknum:				the name and number of the current block
+trialcode, trialnum: 				the name and number of the currently recorded trial
+										(Note: not all trials that are run might record data => by default only trial.feedback stores data to the datafile)
+/squarenumber:						the current length (number of squares presented)
+/switchintensity:					the currently selected switchintensity (1 = low; 2 = medium; 3 = high)
+/switchfrequency:					the calculated switch frequency (based on squarenumber and switchintensity)
+/switch:							contains the currently selected switchposition
+/switchpositions:					a string variable that stores all switchpositions in order from lowest to highest
+/symbolorder:						string variable that stores the order of the presented symbols
+/countsymbol1:						counts the number of symbol1 (small squares) cards that have been presented
+/countsymbol2:						counts the number of symbol2 (big squares) cards that have been presented
+radiobuttons.countsymbol1.response:	the participant's count of symbol 1 (small squares) cards
+radiobuttons.countsymbol2.response: the participant's count of symbol 2 (big squares) cards
+/correctcount1:						1 = participant counted symbol1 cards correctly; 0 = participant did not count symbol1 cards correctly
+/correctcount2:						1 = participant counted symbol2 cards correctly; 0 = participant did not count symbol2 cards correctly
+/correct:							1 = both of participant's count are correct; 0 = otherwise
+/rt:								latency of response (selecting the two counts)
+
+/loopcount:							a  loop counter (relevant for establishing all the switchpositions)
+/countcards:						counts all the currently presented cards
+/countswitches:						counts the number of switches that have taken place
+/countsymbol1:						counts the number of symbol1 (small squares) cards that have been presented
+/countsymbol2:						counts the number of symbol2 (big squares) cards that have been presented
+/textbox.turkerid.response: 		mturker ID number
+
+<data>
+/file = "DepletePart2SCTDepleteRaw.iqdat"
+/columns = [textbox.turkerid.response, date, time, subject, group, blockcode, blocknum, trialcode, trialnum,
+			values.squarenumber, values.switchintensity, values.switchfrequency, values.switchpositions,
+			values.symbolorder,  values.countsymbol1, values.countsymbol2,
+			radiobuttons.countsymbol1.response, radiobuttons.countsymbol2.response,
+			values.correctcount1, values.correctcount2, expressions.correct, values.rt, values.trialno]
+/separatefiles = true
+</data>
+
+
+********************
+summary data
+********************
+script.startdate:				date script was run
+script.starttime:				time script was started
+script.subjectid:				subject id number
+script.groupid:					group id number
+script.elapsedtime:				time it took to run script (in ms)
+/completed:						0 = script was not completed (prematurely aborted); 1 = script was completed (all conditions run)
+
+/totalcorrect:					number of times participants was correct on both counts
+/perc_totalcorrect:				percentage of times participant was correct on both counts
+/values.turkerid:      			mturker ID number
+
+<summarydata>
+/file = "DepletePart2SCTDepleteSummary.iqdat"
+/columns = [values.completioncode, values.turkerid, script.startdate, script.starttime, script.subjectid, script.groupid, script.elapsedtime, values.exptimeseconds, values.completed,
+values.totalcorrect, values.trialno, expressions.perc_totalcorrect, values.maxtrials, values.mincorrectbored, values.mincorrectdeplete,
+slider.bored.response, slider.effort.response, slider.frustration.response, slider.mentaldemand.response, slider.fatigue.response, slider.performance.response, slider.temporal.response, slider.enjoy.response,
+textbox.age.response, textbox.nationality.response, textbox.comments.response, radiobuttons.gender.response, radiobuttons.nativespeaker.response]
+</summarydata>
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+							REMAINING CODE: Customize after careful consideration only
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+*******************************************************************************************************************
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	VALUES: automatically updated
+*******************************************************************************************************************
+*******************************************************************************************************************
+/completed:							0 = script was not completed (prematurely aborted); 1 = script was completed (all conditions run)
+/squarenumber:						the current length (number of squares presented)
+/switchintensity:					the currently selected switchintensity (1 = low; 2 = medium; 3 = high)
+/switchfrequency:					the calculated switch frequency (based on squarenumber and switchintensity)
+/switch:							contains the currently selected switchposition
+/switchpositions:					a string variable that stores all switchpositions in order from lowest to highest
+/neednewswitch:						boolean variable: true: the next switchposition should be sampled false: don't need another switchposition (yet)
+/startsymbol:						the symbol of the first card:  1 = small square (symbol1) 2 = big square (symbol2)
+/selectsymbol:						the currently selected symbol
+/symbolorder:						string variable that stores the order of the presented symbols
+/loopcount:							a  loop counter (relevant for establishing all the switchpositions)
+/countcards:						counts all the currently presented cards
+/countswitches:						counts the number of switches that have taken place
+/countsymbol1:						counts the number of symbol1 (small squares) cards that have been presented
+/countsymbol2:						counts the number of symbol2 (big squares) cards that have been presented
+/correctcount1:						1 = participant counted symbol1 cards correctly; 0 = participant did not count symbol1 cards correctly
+/correctcount2:						1 = participant counted symbol2 cards correctly; 0 = participant did not count symbol2 cards correctly
+/totalcorrect:						number of times participants was correct on both counts
+/rt:								latency of response (selecting the two counts)
+/index:								helper variable to access the already selected switchpositions for sorting
+/changesign:						helper variable to change symbols
+/helper:			 				helper variable for sorting
+/restduration:						current rest duration
+
+/squarenumber = 11
+/switchintensity = 1
+
+
+<values>
+/completed = 0
+/squarenumber = 11
+/switchintensity = 1
+/switchfrequency = 0
+/switch = 0
+/switchpositions = ""
+/neednewswitch = 0
+/startsymbol = 0
+/selectsymbol = 0
+/symbolorder = ""
+/loopcount = 0
+/countcards = 0
+/countswitches = 0
+/countsymbol1 = 0
+/countsymbol2 = 0
+/correctcount1 = 0
+/correctcount2 = 0
+/correctprevioustrial = 0
+/totalcorrect = 0
+/rt = 0
+/index = 0
+/changesign = 0
+/helper = 0
+/restduration = 0
+/turkerid = ""
+
+/debug = 0
+</values>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	EXPRESSIONS
+*******************************************************************************************************************
+*******************************************************************************************************************
+/switch_high-
+/switch_low:			calculations of switchfrequencies depending on values.squarenumber for the 3 different
+						switch intensities
+/correct:				1 = both counts correct; 0 = otherwise
+/perc_totalcorrect:		percentage of times participant was correct on both counts
+
+
+
+<expressions>
+/switch_high3 = floor(values.squarenumber/1.3)
+/switch_high2 = floor(values.squarenumber/1.5)
+/switch_high = floor(values.squarenumber/2)
+/switch_medium = floor(values.squarenumber/4)
+/switch_low = 1
+
+/correct = if (values.correctcount1 == 1 && values.correctcount2 == 1) 1 else 0
+/perc_totalcorrect = values.totalcorrect/trial.feedback.count
+</expressions>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	INSTRUCTIONS
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	STIMULI
+*******************************************************************************************************************
+*******************************************************************************************************************
+<picture symbol>
+/items = symbols
+/select = values.selectsymbol
+/size = (100%, values.pictureheight)
+/position = (50%, 50%)
+</picture>
+
+<text fixationcross>
+/items = ("+")
+/position = (50%, 50%)
+/ fontstyle = ("Arial",4%, false, false, false, false, 5, 1)
+/ txcolor = (0, 0, 0)
+</text>
+
+<shape eraser>
+/shape = rectangle
+/size = (100%, 100%)
+/color = white
+/position = (50%, 50%)
+/erase = false
+</shape>
+
+*********************************
+Response questions
+*********************************
+
+/monkeyresponse = (values.countsymbol1, values.countsymbol2)
+/monkeyresponse = (values.countsymbol1)
+<radiobuttons countsymbol1>
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (0, 0, 0)
+/caption = "How many <%values.symbol1_label%>s did you count (select with mouse)?"
+/options = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17")
+/required = true
+/ orientation = horizontal
+/monkeyresponse = (values.countsymbol1)
+/position = (5, 35)
+</radiobuttons>
+
+<radiobuttons countsymbol2>
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (0, 0, 0)
+/caption = "How many <%values.symbol2_label%>s did you count (select with mouse)?"
+/options = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17")
+/required = true
+/ orientation = horizontal
+/monkeyresponse = (values.countsymbol2)
+/position = (5, 48)
+</radiobuttons>
+
+<textbox turkerid>
+/caption = "Please type or paste your Mechanical Turk worker ID in the box below."
+/textboxsize = (50, 10)
+/fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/required = true
+</textbox>
+
+<textbox turkeridcopypaste>
+/caption = "Use your MOUSE to select and copy your worker ID (<%values.turkerid%>) from the textbox below (CTRL-C or COMMAND-C WILL NOT WORK! PLEASE USE YOUR MOUSE!)
+You'll need to paste it again into a textbox when you start the next part of the study. We suggest you also have your worker ID written on a piece of paper in case the copying and pasting don't work."
+/defaultresponse = values.turkerid
+/textboxsize = (50, 10)
+</textbox>
+
+<textbox completioncode>
+/caption = "Your completion code/secret key is below. Use your MOUSE to select, copy, and paste it into your MTurk window to ensure payment (CTRL-C or COMMAND-C WILL NOT WORK! PLEASE USE YOUR MOUSE!). You might want to write it on a piece of paper in case the copying and pasting don't work."
+/textboxsize = (50, 10)
+/defaultresponse = values.completioncode
+</textbox>
+
+
+#############################TASK RATINGS################################
+#########################################################################
+<slider mentaldemand>
+/caption = "How mentally demanding was the task?"
+/labels = ("very low", "very demanding")
+/fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/range = (10, 70)
+/increment = 1
+/showticks = false
+/showtooltips = false
+/slidersize = (50, 50)
+/position = (20, 40)
+/responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/required = true
+/monkeyresponse = (5)
+</slider>
+
+<surveypage mentaldemand>
+/questions = [1 = mentaldemand]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+
+<slider temporal>
+/caption = "How hurried or rushed was the pace of the task?"
+/labels = ("very low", "very hurried")
+/fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/range = (10, 70)
+/increment = 1
+/showticks = false
+/showtooltips = false
+/slidersize = (50, 50)
+/position = (20, 40)
+/responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/required = true
+/monkeyresponse = (5)
+</slider>
+
+<surveypage temporal>
+/questions = [1 = temporal]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+
+<slider fatigue>
+/caption = "I'm mentally fatigued now"
+/labels = ("strongly disagree", "strongly agree")
+/fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/range = (10, 70)
+/increment = 1
+/showticks = false
+/showtooltips = false
+/slidersize = (50, 50)
+/position = (20, 40)
+/responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/required = true
+/monkeyresponse = (5)
+</slider>
+
+<surveypage fatigue>
+/questions = [1 = fatigue]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+
+<slider performance>
+/caption = "How successful were you in accomplishing what you were asked to do?"
+/labels = ("perfect", "failure")
+/fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/range = (10, 70)
+/increment = 1
+/showticks = false
+/showtooltips = false
+/slidersize = (50, 50)
+/position = (20, 40)
+/responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/required = true
+/monkeyresponse = (5)
+</slider>
+
+<surveypage performance>
+/questions = [1 = performance]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+
+<slider effort>
+/caption = "How hard did you have to work?"
+/labels = ("very little", "very hard")
+/fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/range = (10, 70)
+/increment = 1
+/showticks = false
+/showtooltips = false
+/slidersize = (50, 50)
+/position = (20, 40)
+/responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/required = true
+/monkeyresponse = (5)
+</slider>
+
+<surveypage effort>
+/questions = [1 = effort]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+
+<slider frustration>
+/caption = "How insecure, discouraged, irritated, stressed, and annoyed were you?"
+/labels = ("very little", "very high")
+/fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/range = (10, 70)
+/increment = 1
+/showticks = false
+/showtooltips = false
+/slidersize = (50, 50)
+/position = (20, 40)
+/responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/required = true
+/monkeyresponse = (5)
+</slider>
+
+<surveypage frustration>
+/questions = [1 = frustration]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+
+<slider bored>
+/caption = "How boring was the task?"
+/labels = ("not boring", "very boring")
+/fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/range = (10, 70)
+/increment = 1
+/showticks = false
+/showtooltips = false
+/slidersize = (50, 50)
+/position = (20, 40)
+/responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/required = true
+/monkeyresponse = (5)
+</slider>
+
+<surveypage bored>
+/questions = [1 = bored]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+
+<slider enjoy>
+/caption = "How much did you enjoy the task?"
+/labels = ("very little", "very much")
+/fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/range = (10, 70)
+/increment = 1
+/showticks = false
+/showtooltips = false
+/slidersize = (50, 50)
+/position = (20, 40)
+/responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/required = true
+/monkeyresponse = (5)
+</slider>
+
+<surveypage enjoy>
+/questions = [1 = enjoy]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+#######################################################################
+#######################################################################
+
+###############DEMOGRAPHICS AND STANDARD QUESTIONS#####################
+#######################################################################
+<textbox age>
+/caption = "Please enter your age:"
+/fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/textboxsize = (50, 3)
+/range = (0, 120)
+</textbox>
+
+<textbox nationality>
+/caption = "What is your nationality?"
+/fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/textboxsize = (50, 3)
+</textbox>
+
+<radiobuttons gender>
+/caption = "What is your gender?"
+/fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/options = ("female", "male", "other", "decline to answer")
+/orientation = horizontal
+</radiobuttons>
+
+<radiobuttons nativespeaker>
+/caption = "Are you a native speaker of English?"
+/fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/options = ("yes", "no")
+/orientation = horizontal
+</radiobuttons>
+
+<surveypage standardquestions>
+/questions = [1 = gender; 2 = age; 3 = nationality; 4 = nativespeaker]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+
+<textbox comments>
+/caption = "Please include any comments you have about the study:"
+/fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/textboxsize = (50, 10)
+/multiline = true
+/required = false
+</textbox>
+
+<surveypage comments>
+/questions = [1 = comments]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+##################################################################
+##################################################################
+
+
+
+
+*********************************
+Feedback
+*********************************
+<text feedback>
+/items = feedback
+/select = 1
+/position = (50%, 50%)
+/ fontstyle = ("Arial", 5%, false, false, false, false, 5, 1)
+/ txcolor = (0, 0, 0)
+</text>
+
+*********************************
+Rest trial stimuli
+*********************************
+<clock resttimer>
+/ mode = timer
+/ erase = true(255, 255, 255)
+/ fontstyle = ("Arial", 5%, false, false, false, false, 5, 1)
+/ txcolor = yellow
+/ txbgcolor = black
+/ timeout = values.restduration
+/ position = (50%, 60%)
+/ format = "mm:ss"
+</clock>
+
+<text restinstructions>
+/items = ("Next sequence begins in: ")
+/position = (50%, 50%)
+/ fontstyle = ("Arial", 5%, false, false, false, false, 5, 1)
+/ txcolor = (0, 0, 0)
+</text>
+
+************************************************
+debug stimulus: presents
+the correct counts during the selection process
+************************************************
+
+<text debug>
+/items = ("ans1: <%values.countsymbol1%>, ans2: <%values.countsymbol2%>, 
+squares: <%values.squarenumber%>, intensity: <%values.switchintensity%>")
+/position = (50%, 5%)
+/txcolor = (blue)
+</text>
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	LISTS
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+
+Note: list is created during runtime; it holds the possible temporal squarepositions
+that can be used as switchpositions for each squarenumber (poolsize is explicitly updated
+during runtime to reflect changes in values.squarenumber)
+<list trialpositions>
+/replace = false
+/poolsize = values.squarenumber
+/selectionrate = always
+</list>
+
+Note: list is created during runtime; it holds the selected switchpositions ordered from smallest to largest
+<list switchpositions>
+/selectionmode = sequence
+</list>
+
+Note: list controls the randomly sampling of the first symbol to be shown
+1/2 the first symbols are big squares
+<list firstsymbol>
+/items = (1, 2)
+/poolsize = 100
+/replace = false
+</list>
+
+
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	TRIALS: Trial Sequence
+*******************************************************************************************************************
+*******************************************************************************************************************
+<surveypage turkerid>
+/stimulusframes = [1 = debug]
+/questions = [1 = turkerid]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+/ontrialend = [values.turkerid = textbox.turkerid.response]
+</surveypage>
+
+<surveypage turkeridcopypaste>
+/questions = [1 = turkeridcopypaste]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+
+<surveypage completioncode>
+/questions = [1 = completioncode]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+
+
+Notes: Use this to set squarenumber, switchfrequency, and switchintensity based on previous trial accuracy
+<trial start>
+/ontrialbegin = [
+list.trialpositions.reset(); list.switchpositions.reset();
+values.switchpositions =""; values.symbolorder = "";
+values.countswitches = 0; values.countsymbol1 = 0; values.countsymbol2 = 0;
+values.correctprevioustrial = values.correctcount1 + values.correctcount2]
+
+/ontrialbegin = [
+if (values.correctprevioustrial == 2 && values.squarenumber < 17 && values.switchintensity <= 5) {values.squarenumber += 1; values.switchintensity += 0}
+else if (values.correctprevioustrial == 2 && values.squarenumber == 17 && values.switchintensity < 5) {values.squarenumber -= 6; values.switchintensity += 1}
+else if (values.correctprevioustrial == 2 && values.squarenumber == 17 && values.switchintensity == 5) {values.squarenumber = 17; values.switchintensity = 5}
+
+else if (values.correctprevioustrial < 2 && values.squarenumber == 11 && values.switchintensity == 1) {values.squarenumber = 11; values.switchintensity = 1}
+else if (values.correctprevioustrial < 2 && values.squarenumber == 11 && values.switchintensity > 1) {values.squarenumber += 6; values.switchintensity -= 1}
+else if (values.correctprevioustrial < 2 && values.squarenumber > 11 && values.switchintensity >= 1) {values.squarenumber -= 1; values.switchintensity += 0}
+]
+
+/ontrialbegin = [
+if (values.correctprevioustrial == 2) {values.cardpresentationduration -= 20}
+else if (values.correctprevioustrial < 2) {values.cardpresentationduration += 20}
+]
+
+/ontrialbegin = [
+if (values.switchintensity == 1) {values.switchfrequency = expressions.switch_low}
+else if (values.switchintensity == 2) {values.switchfrequency = expressions.switch_medium}
+else if (values.switchintensity == 3) {values.switchfrequency = expressions.switch_high}
+else if (values.switchintensity == 4) {values.switchfrequency = expressions.switch_high2}
+else if (values.switchintensity == 5) {values.switchfrequency = expressions.switch_high3}]
+
+/trialduration= 0
+/branch = [values.loopcount = 0; trial.switchpositionassembly]
+/recorddata = false
+</trial>
+
+Notes:
+* randomly selects the next switchposition
+* if switchfrequency is surpassed go on to trial.presentcards that starts presenting the cards
+* if switchfrequency isn't surpassed yet, sort the current switchposition into the switchposition list via trial.sorting
+<trial switchpositionassembly>
+/ontrialbegin = [values.loopcount += 1]
+/ontrialbegin = [values.switch = list.trialpositions.nextindex + 1]
+
+/branch = [if (values.loopcount <= values.switchfrequency) {values.index = list.switchpositions.itemcount + 1; trial.sorting}]
+/branch = [if (values.loopcount > values.switchfrequency) {values.countcards = 0; trial.presentcards}]
+/trialduration = 0
+/recorddata = false
+</trial>
+
+Notes:
+* finds the appropriate place for the current switchposition into the switchposition list
+* switch position list is getting sorted from smallest to biggest switchposition so that switchpositions can be called
+	in sequence
+* when the current item (values.switch) is successfully sorted into list.switchpositions -> trial.switchpositionassembly
+<trial sorting>
+/ontrialbegin = [values.index -= 1]
+/ontrialbegin = [if (values.index == 0) values.helper = 0 else values.helper = getitem(list.switchpositions, values.index)]
+/branch = [if (values.helper < values.switch) {list.switchpositions.insertitem(values.switch, values.index + 1); trial.switchpositionassembly}]
+/branch = [if (values.helper > values.switch && values.index == 1) {list.switchpositions.insertitem(values.switch, values.index); trial.switchpositionassembly}]
+/branch = [if (values.helper > values.switch && values.index > 1) trial.sorting]
+
+/trialduration = 0
+/recorddata = false
+</trial>
+
+
+Notes:
+* presents as many cards as dictated by values.squarenumber
+* the symbol of the FIRST card is randomly decided
+* before each card is presented it is checked whether the cards needs to be switched (by comparing to the next valid values.switch)
+* updates the symbol counters
+<trial presentcards>
+/ontrialbegin = [values.countcards += 1]
+/ontrialbegin = [if (values.countcards == 1) {values.selectsymbol = list.firstsymbol.nextvalue; values.neednewswitch = true}]
+
+/ontrialbegin = [if (values.countcards == 1 && values.selectsymbol == 1) values.changesign = 1]
+/ontrialbegin = [if (values.countcards == 1 && values.selectsymbol == 2) values.changesign = -1]
+
+/ontrialbegin = [if (values.neednewswitch == true && values.countswitches < values.switchfrequency) {
+						values.switch = list.switchpositions.nextvalue;
+						values.switchpositions = concat(values.switchpositions, values.switch);
+						values.switchpositions = concat(values.switchpositions, ",")}]
+
+/ontrialbegin = [if (values.countcards == values.switch) {
+									values.selectsymbol += values.changesign;
+									values.countswitches += 1;
+									values.neednewswitch = true;
+									values.changesign = -1 * values.changesign}
+					else 			{values.neednewswitch = false}]
+/ontrialbegin = [if (values.countswitches > values.switchfrequency) {values.neednewswitch = false}]
+/ontrialbegin = [values.symbolorder = concat(values.symbolorder, values.selectsymbol)]
+
+/ontrialbegin = [trial.presentcards.insertstimulustime(shape.eraser, values.fixationcrosspresentation)]
+/ontrialbegin = [trial.presentcards.insertstimulustime(picture.symbol, values.fixationcrosspresentation)]
+/ontrialend = [trial.presentcards.resetstimulusframes()]
+/stimulustimes = [0 = fixationcross]
+
+/ontrialend = [if (values.selectsymbol == 1) values.countsymbol1 += 1 else values.countsymbol2 += 1]
+
+/branch = [if (values.countcards < values.squarenumber) trial.presentcards]
+/branch = [if (values.countcards >= values.squarenumber) surveypage.symbolcount]
+/timeout = (values.fixationcrosspresentation + values.cardpresentationduration)
+/recorddata = false
+</trial>
+
+Notes:
+* presents two radiobutton question to select number of counts for small and big squares
+* maximum time to respond is values.responseduration
+<surveypage symbolcount>
+/stimulusframes = [1 = debug]
+/finishlabel = "Submit"
+/questions = [1 = countsymbol1; 2 = countsymbol2]
+/ontrialend = [if (radiobuttons.countsymbol1.response == values.countsymbol1) values.correctcount1 = 1 else values.correctcount1 = 0]
+/ontrialend = [if (radiobuttons.countsymbol2.response == values.countsymbol2) values.correctcount2 = 1 else values.correctcount2 = 0]
+/branch = [if (values.showfeedback == 1) trial.feedback]
+/timeout = values.responseduration
+/showpagenumbers = false
+/showquestionnumbers = false
+/recorddata = false
+</surveypage>
+
+Notes:
+* presents feedback in the form of correct counts
+* saves data to the data file
+<trial feedback>
+/stimulusframes = [1 = feedback]
+/ontrialend = [values.rt = surveypage.symbolcount.latency; values.totalcorrect += expressions.correct; values.trialno += 1; values.overalltrial += 1]
+/timeout = values.feedbackduration
+/recorddata = false
+/branch = [if (trial.feedback.count < 9 || (trial.feedback.count > 9 && trial.feedback.count < 18) ) {values.restduration = values.restduration_regular; trial.rest}]
+/branch = [if (trial.feedback.count == 9) {values.restduration = values.restduration_long; trial.rest}]
+/recorddata = true
+</trial>
+
+Notes:
+* presents a rest clock
+<trial rest>
+/stimulusframes = [1 = restinstructions, resttimer]
+/timeout = clock.resttimer.timeout
+/recorddata = false
+/skip = [values.overalltrial == 2]
+</trial>
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	BLOCKS
+*******************************************************************************************************************
+*******************************************************************************************************************
+* get mturk id
+<block turkerid>
+/trials = [1 = turkerid]
+/onblockend = [values.turkerid = textbox.turkerid.response]
+</block>
+
+Note:
+* runs 2 practice trial sequence
+<block practice>
+/onblockbegin = [values.correctcount1 = 1; values.correctcount2 = 1; values.squarenumber = 13; values.switchintensity = 1; values.showfeedback = 1]
+/skip = [values.skippractice == true]
+/preinstructions = (intro, practice)
+/trials = [1-2 = start]
+/onblockend = [
+values.feedbackduration = 0;
+values.correctcount1 = 1; values.correctcount2 = 1; values.squarenumber = 12; values.switchintensity = 3;
+values.trialno = 0; values.totalcorrect = 0
+]
+</block>
+
+
+Note:
+* runs trial sequences
+* if specific no. of correct responses made, stop block; or if max trials have been attempted, stop block
+/stop = [values.totalcorrect >= values.mincorrectdeplete]
+* timeout: deadline for block/ends block after a certain amount of time has passed in milliseconds (15 mins)
+<block SCT>
+/onblockbegin = [values.feedbackduration = 0; values.showfeedback = 0]
+/preinstructions = (taskintro1, taskintro3)
+/trials = [1-60 = start]
+/timeout = 600000
+/onblockend = [values.exptimeseconds = round(block.SCT.elapsedtime / 1000)]
+</block>
+
+
+<block turkeridcopypaste>
+/trials = [1 = turkeridcopypaste]
+</block>
+
+<block comments>
+/trials = [1 = comments]
+/recorddata = false
+</block>
+
+<block completioncode>
+/trials = [1 = completioncode]
+</block>
+
+<block taskratings>
+/trials = [1-5 = noreplace(mentaldemand, bored, frustration, effort, fatigue)]
+/recorddata = false
+</block>
+
+<block standardquestions>
+/trials = [1 = standardquestions]
+/recorddata = false
+</block>
+
+<block taskend>
+/preinstructions = (taskend)
+</block>
+
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	EXPERIMENT
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+<expt >
+/onexptbegin = [if (values.showcorrectcounts == true) text.debug.textcolor = red else text.debug.textcolor = white]
+/onexptbegin = [values.completioncode = floor(rand(99000000, 99999999))]
+/blocks = [1 = practice; 2 = SCT; 3 = taskratings; 4 = taskend]
+/onexptend = [values.completed = 1]
+</expt>
+
+*******************************************************************************************************************
+												End of File
+*******************************************************************************************************************
