@@ -28,4 +28,4 @@ All `.R` files that begin with `m_` are `R` scripts that fit Bayesian models usi
 
 
 
-All R code has been tested using R version 3.6.1 (2019-07-05). R package versions: bayesplot_1.7.0, broom_0.5.2, brms_2.10.0, Rcpp_1.0.3, glue_1.3.1, data.table_1.12.6, forcats_0.4.0, stringr_1.4.0, dplyr_0.8.3, tidyr_1.0.0, tibble_2.1.3, ggplot2_3.2.1     tidyverse_1.2.1
+All R code has been tested in R version 3.6.1 (2019-07-05). R package versions: bayesplot_1.7.0, broom_0.5.2, brms_2.10.0, Rcpp_1.0.3, glue_1.3.1, data.table_1.12.6, forcats_0.4.0, stringr_1.4.0, dplyr_0.8.3, tidyr_1.0.0, tibble_2.1.3, ggplot2_3.2.1     tidyverse_1.2.1
