@@ -1,9 +1,14 @@
 This repository contains stuff for the following manuscript: **"Strong effort manipulations reduce response caution: A preregistered reinvention of the ego-depletion paradigm"**
 
+If you're planning to run the analysis scripts in the Code directory, I strongly recommend you clone or download this entire repository.
 
 ### Data
 
+* Data for analysis (required to run analysis scripts)
+
 ### Materials
+
+* 
 
 ### Pregistrations
 
@@ -11,4 +16,6 @@ This repository contains stuff for the following manuscript: **"Strong effort ma
 
 * [Exploratory preregistered analyses (diffusion model for conflict tasks)](https://osf.io/7qcxa)
 
-### Scripts
+### Code/scripts
+
+* Analysis code
