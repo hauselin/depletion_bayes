@@ -2,6 +2,10 @@ This repository contains stuff for the following manuscript: **"Strong effort ma
 
 If you're planning to run the analysis scripts in the Code directory, I strongly recommend you **clone or download this ENTIRE repository**.
 
+### Code/scripts
+
+* Analysis code
+
 ### Data
 
 * Data for analysis (required to run analysis scripts)
@@ -16,6 +20,3 @@ If you're planning to run the analysis scripts in the Code directory, I strongly
 
 * [Exploratory preregistered analyses (diffusion model for conflict tasks)](https://osf.io/7qcxa)
 
-### Code/scripts
-
-* Analysis code
