@@ -1,6 +1,6 @@
 # Code
 
-To begin an R session, click and run `analysis_Rproject.Rproj` to start a new R project/session that sets up your working directory correctly.
+To begin an R session, click and run `analysis_Rproject.Rproj` to start a new R project/session that sets up your working directory correctly. The `brms_models` directory is where `brms` models will be saved when you run the code.
 
 All `.R` files that begin with `m_` are `R` scripts that fit Bayesian models using the `brms` package.
 
@@ -8,7 +8,7 @@ All `.R` files that begin with `m_` are `R` scripts that fit Bayesian models usi
 
 `m_a_condition_congruency.R`: boundary ~ condition + congruency
 
-`m_a_condition_congruency_interact.R`:
+`m_a_condition_congruency_interact.R`: boundary ~ condition * congruency
 
 `m_a_phenom.R`:
 
