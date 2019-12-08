@@ -20,6 +20,7 @@ ddm.csv
 ## Additional information
 
 * Contact: hauselin@gmail.com
+* Registration: see https://github.com/hauselin/depletion_bayes
 
 ## Columns
 
