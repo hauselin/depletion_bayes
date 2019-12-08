@@ -31,15 +31,15 @@ stroop.csv
 | ------------ | --------- | ------------------------------------------------------------ |
 | pNo          | character | participant id                                               |
 | condition    | character | experimental condition (control/low demand, deplete/high demand) |
-| study        | character | study number (1, 2, 3, 4)                                    |
+| study        | numeric   | study number (1, 2, 3, 4)                                    |
 | sessionOrder | character | order of experimental condition assignment                   |
 | congruency   | character | Stroop congruency (congruent, incongruent)                   |
-| rtOverall    | character | reaction time (seconds) collapsed across Stroop trial types  |
-| accOverall   | character | accuracy (proportion correct) collapsed across Stroop trial types |
-| rt           | character | reaction time (seconds)                                      |
-| acc          | character | accuracy (proprotion correct)                                |
-| rtCorrect    | character | reaction time (seconds) for correct trials                   |
-| session      | character | session number (1, 2)                                        |
+| rtOverall    | numeric   | reaction time (seconds) collapsed across Stroop trial types  |
+| accOverall   | numeric   | accuracy (proportion correct) collapsed across Stroop trial types |
+| rt           | numeric   | reaction time (seconds)                                      |
+| acc          | numeric   | accuracy (proprotion correct)                                |
+| rtCorrect    | numeric   | reaction time (seconds) for correct trials                   |
+| session      | integer   | session number (1, 2)                                        |
 
 End of documentation.
 
