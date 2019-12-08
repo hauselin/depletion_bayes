@@ -1,6 +1,6 @@
 A GitHub flavored Markdown textfile documenting a dataset.
 
-Generated using [docdata package](https://hauselin.github.io/docdata/) on 2019-12-08 18:17:45.
+Generated using [docdata package](https://hauselin.github.io/docdata/) on 2019-12-08 18:26:08.
 To cite this package, type citations("docdata") in console.
 
 ## Data source
@@ -27,19 +27,19 @@ stroop.csv
 * Rows: 2744
 * Columns: 11
 
-| Column       | Type      | Description                                                  |
-| ------------ | --------- | ------------------------------------------------------------ |
-| pNo          | character | participant id                                               |
-| condition    | character | experimental condition (control/low demand, deplete/high demand) |
-| study        | integer   | study number (1, 2, 3, 4)                                    |
-| sessionOrder | character | order of experimental condition assignment                   |
-| congruency   | character | Stroop congruency (congruent, incongruent)                   |
-| rtOverall    | numeric   | reaction time (seconds) collapsed across Stroop trial types  |
-| accOverall   | numeric   | accuracy (proportion correct) collapsed across Stroop trial types |
-| rt           | numeric   | reaction time (seconds)                                      |
-| acc          | numeric   | accuracy (proprotion correct)                                |
-| rtCorrect    | numeric   | reactiontime (seconds) for correct trials                    |
-| session      | integer   | session number (1, 2)                                        |
+| Column        | Type       | Description                                                        |
+| ------------- | ---------- | ------------------------------------------------------------------ |
+| pNo           | character  | participant id                                                     |
+| condition     | character  | experimental condition (control/low demand, deplete/high demand)   |
+| study         | character  | study number (1, 2, 3, 4)                                          |
+| sessionOrder  | character  | order of experimental condition assignment                         |
+| congruency    | character  | Stroop congruency (congruent, incongruent)                         |
+| rtOverall     | character  | reaction time (seconds) collapsed across Stroop trial types        |
+| accOverall    | character  | accuracy (proportion correct) collapsed across Stroop trial types  |
+| rt            | character  | reaction time (seconds)                                            |
+| acc           | character  | accuracy (proprotion correct)                                      |
+| rtCorrect     | character  | reactiontime (seconds) for correct trials                          |
+| session       | character  | session number (1, 2)                                              |
 
 End of documentation.
 
