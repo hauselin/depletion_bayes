@@ -1,6 +1,6 @@
 A GitHub flavored Markdown textfile documenting a dataset.
 
-Generated using [docdata package](https://hauselin.github.io/docdata/) on 2019-12-08 18:26:17.
+Generated using [docdata package](https://hauselin.github.io/docdata/) on 2019-12-08 18:39:10.
 To cite this package, type citations("docdata") in console.
 
 ## Data source
@@ -29,15 +29,15 @@ ddm.csv
 
 | Column        | Type       | Description                                                       |
 | ------------- | ---------- | ----------------------------------------------------------------- |
-| study         | character  | study number (1, 2, 3, 4)                                         |
-| session       | character  | session number (1, 2)                                             |
+| study         | integer    | study number (1, 2, 3, 4)                                         |
+| session       | integer    | session number (1, 2)                                             |
 | pNo           | character  | participant id                                                    |
 | condition     | character  | experimental condition (control/low demand, deplete/high demand)  |
 | congruency    | character  | Stroop congruency (congruent, incongruent)                        |
 | sessionOrder  | character  | order of experimental condition assignment                        |
-| a             | character  | EZ-diffusion boundary parameter                                   |
-| v             | character  | EZ-diffusion drift rate parameter                                 |
-| t0_Ter        | character  | EZ-diffusion non-decision time parameter                          |
+| a             | numeric    | EZ-diffusion boundary parameter                                   |
+| v             | numeric    | EZ-diffusion drift rate parameter                                 |
+| t0_Ter        | numeric    | EZ-diffusion non-decision time parameter                          |
 
 End of documentation.
 
