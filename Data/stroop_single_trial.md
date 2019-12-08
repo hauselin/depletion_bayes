@@ -27,15 +27,15 @@ stroop_single_trial.csv
 * Rows: 246600
 * Columns: 7
 
-| Column      | Type       | Description                                                  |
-| ----------- | ---------- | ------------------------------------------------------------ |
-| pNo         | character  | participantid                                                |
-| condition   | character  | experimentalcondition(control/lowdemand,deplete/highdemand)  |
-| study       | character  | studynumber(1,2,3,4)                                         |
-| trialnum    | character  | trialnumber                                                  |
-| congruency  | character  | Stroopcongruency(congruent,incongruent)                      |
-| acc         | character  | accuracy(0:error,1:correct)                                  |
-| rt          | character  | reactiontime(seconds)                                        |
+| Column     | Type      | Description                                                  |
+| ---------- | --------- | ------------------------------------------------------------ |
+| pNo        | character | participant id                                               |
+| condition  | character | experimental condition (control/low demand, deplete/high demand) |
+| study      | character | study number (1, 2, 3, 4)                                    |
+| trialnum   | character | trial number                                                 |
+| congruency | character | Stroop congruency (congruent, incongruent)                   |
+| acc        | character | accuracy (0:error, 1:correct)                                |
+| rt         | character | reaction time (seconds)                                      |
 
 End of documentation.
 

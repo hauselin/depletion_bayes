@@ -27,17 +27,17 @@ ddm.csv
 * Rows: 2744
 * Columns: 9
 
-| Column        | Type       | Description                                                  |
-| ------------- | ---------- | ------------------------------------------------------------ |
-| study         | character  | studynumber(1,2,3,4)                                         |
-| session       | character  | sessionnumber(1,2)                                           |
-| pNo           | character  | participantid                                                |
-| condition     | character  | experimentalcondition(control/lowdemand,deplete/highdemand)  |
-| congruency    | character  | Stroopcongruency(congruent,incongruent)                      |
-| sessionOrder  | character  | orderofexperimentalconditionassignment                       |
-| a             | character  | EZ-diffusionboundaryparameter                                |
-| v             | character  | EZ-diffusiondriftrateparameter                               |
-| t0_Ter        | character  | EZ-diffusionnon-decisiontimeparameter                        |
+| Column       | Type      | Description                                                  |
+| ------------ | --------- | ------------------------------------------------------------ |
+| study        | character | study number (1, 2, 3, 4)                                    |
+| session      | character | session number (1, 2)                                        |
+| pNo          | character | participant id                                               |
+| condition    | character | experimental condition(control/low demand,deplete/high demand) |
+| congruency   | character | Stroop congruency (congruent,incongruent)                    |
+| sessionOrder | character | order of experimental condition assignment                   |
+| a            | character | EZ-diffusion boundary parameter                              |
+| v            | character | EZ-diffusion drift rate parameter                            |
+| t0_Ter       | character | EZ-diffusion non-decision time parameter                     |
 
 End of documentation.
 

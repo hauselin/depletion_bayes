@@ -27,19 +27,19 @@ stroop.csv
 * Rows: 2744
 * Columns: 11
 
-| Column        | Type       | Description                                                  |
-| ------------- | ---------- | ------------------------------------------------------------ |
-| pNo           | character  | participantid                                                |
-| condition     | character  | experimentalcondition(control/lowdemand,deplete/highdemand)  |
-| study         | character  | studynumber(1,2,3,4)                                         |
-| sessionOrder  | character  | orderofexperimentalconditionassignment                       |
-| congruency    | character  | Stroopcongruency(congruent,incongruent)                      |
-| rtOverall     | character  | reactiontime(seconds)collapsedacrossStrooptrialtypes         |
-| accOverall    | character  | accuracy(proportioncorrect)collapsedacrossStrooptrialtypes   |
-| rt            | character  | reactiontime(seconds)                                        |
-| acc           | character  | accuracy(proprotioncorrect)                                  |
-| rtCorrect     | character  | reactiontime(seconds)forcorrecttrials                        |
-| session       | character  | sessionnumber(1,2)                                           |
+| Column       | Type      | Description                                                  |
+| ------------ | --------- | ------------------------------------------------------------ |
+| pNo          | character | participant id                                               |
+| condition    | character | experimental condition(control/low demand, deplete/high demand) |
+| study        | character | study number (1, 2, 3, 4)                                    |
+| sessionOrder | character | order of experimental condition assignment                   |
+| congruency   | character | Stroop congruency (congruent, incongruent)                   |
+| rtOverall    | character | reaction time (seconds) collapsed across Stroop trial types  |
+| accOverall   | character | accuracy (proportion correct) collapsed across Stroop trial types |
+| rt           | character | reaction time (seconds)                                      |
+| acc          | character | accuracy (proprotion correct)                                |
+| rtCorrect    | character | reactiontime (seconds) for correct trials                    |
+| session      | character | session number(1, 2)                                         |
 
 End of documentation.
 
