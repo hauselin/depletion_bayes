@@ -27,19 +27,19 @@ ratings.csv
 * Rows: 1352
 * Columns: 11
 
-| Column        | Type       | Description                                                       |
-| ------------- | ---------- | ----------------------------------------------------------------- |
-| pNo           | character  | participant id                                                    |
-| condition     | character  | experimental condition (control/low demand, deplete/high demand)  |
-| study         | character  | study number (1, 2, 3, 4)                                         |
-| a             | character  | EZ-diffusion boundary parameter                                   |
-| v             | character  | EZ-diffusion drift rate parameter                                 |
-| bored         | character  | boredom rating                                                    |
-| effort        | character  | effort rating                                                     |
-| fatigue       | character  | fatigue rating                                                    |
-| frustrate     | character  | frustration rating                                                |
-| mentaldemand  | character  | mental demand rating                                              |
-| session       | character  | session number (1, 2)                                             |
+| Column       | Type      | Description                                                  |
+| ------------ | --------- | ------------------------------------------------------------ |
+| pNo          | character | participant id                                               |
+| condition    | character | experimental condition (control/low demand, deplete/high demand) |
+| study        | integer   | study number (1, 2, 3, 4)                                    |
+| a            | numeric   | EZ-diffusion boundary parameter                              |
+| v            | numeric   | EZ-diffusion drift rate parameter                            |
+| bored        | numeric   | boredom rating                                               |
+| effort       | numeric   | effort rating                                                |
+| fatigue      | numeric   | fatigue rating                                               |
+| frustrate    | numeric   | frustration rating                                           |
+| mentaldemand | numeric   | mental demand rating                                         |
+| session      | integer   | session number (1, 2)                                        |
 
 End of documentation.
 
