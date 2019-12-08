@@ -1,6 +1,6 @@
 A GitHub flavored Markdown textfile documenting a dataset.
 
-Generated using [docdata package](https://hauselin.github.io/docdata/) on 2019-12-08 17:55:13.
+Generated using [docdata package](https://hauselin.github.io/docdata/) on 2019-12-08 18:17:03.
 To cite this package, type citations("docdata") in console.
 
 ## Data source
@@ -27,19 +27,19 @@ ratings.csv
 * Rows: 1352
 * Columns: 11
 
-| Column       | Type      | Description                                                  |
-| ------------ | --------- | ------------------------------------------------------------ |
-| pNo          | character | participant id                                               |
-| condition    | character | experimental condition (control/low demand, deplete/high demand) |
-| study        | character | study number (1, 2, 3, 4)                                    |
-| a            | character | EZ-diffusion boundary parameter                              |
-| v            | character | EZ-diffusion drift rate parameter                            |
-| bored        | character | boredom rating                                               |
-| effort       | character | effort rating                                                |
-| fatigue      | character | fatigue rating                                               |
-| frustrate    | character | frustration rating                                           |
-| mentaldemand | character | mental demand rating                                         |
-| session      | character | session number (1, 2)                                        |
+| Column        | Type       | Description                                                       |
+| ------------- | ---------- | ----------------------------------------------------------------- |
+| pNo           | character  | participant id                                                    |
+| condition     | character  | experimental condition (control/low demand, deplete/high demand)  |
+| study         | character  | study number (1, 2, 3, 4)                                         |
+| a             | character  | EZ-diffusion boundary parameter                                   |
+| v             | character  | EZ-diffusion drift rate parameter                                 |
+| bored         | character  | boredom rating                                                    |
+| effort        | character  | effort rating                                                     |
+| fatigue       | character  | fatigue rating                                                    |
+| frustrate     | character  | frustration rating                                                |
+| mentaldemand  | character  | mental demand rating                                              |
+| session       | character  | session number (1, 2)                                             |
 
 End of documentation.
 
