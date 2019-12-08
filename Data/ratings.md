@@ -1,6 +1,6 @@
 A GitHub flavored Markdown textfile documenting a dataset.
 
-Generated using docdata package on 2019-12-08 14:02:03.
+Generated using docdata package on 2019-12-08 17:55:13.
 To cite this package, type citations("docdata") in console.
 
 ## Data source
@@ -27,19 +27,19 @@ ratings.csv
 * Rows: 1352
 * Columns: 11
 
-| Column       | Type      | Description                                                  |
-| ------------ | --------- | ------------------------------------------------------------ |
-| pNo          | character | participant id                                               |
-| condition    | character | experimental condition (control/low demand, deplete/high demand) |
-| study        | integer   | study number (1, 2, 3, 4)                                    |
-| a            | numeric   | EZ-diffusion boundary parameter                              |
-| v            | numeric   | EZ-diffusion drift rate parameter                            |
-| bored        | numeric   | boredom rating                                               |
-| effort       | numeric   | effort rating                                                |
-| fatigue      | numeric   | fatigue rating                                               |
-| frustrate    | numeric   | frustration rating                                           |
-| mentaldemand | numeric   | mental demand rating                                         |
-| session      | numeric   | session number (1, 2)                                        |
+| Column        | Type       | Description                                                  |
+| ------------- | ---------- | ------------------------------------------------------------ |
+| pNo           | character  | participantid                                                |
+| condition     | character  | experimentalcondition(control/lowdemand,deplete/highdemand)  |
+| study         | character  | studynumber(1,2,3,4)                                         |
+| a             | character  | EZ-diffusionboundaryparameter                                |
+| v             | character  | EZ-diffusiondriftrateparameter                               |
+| bored         | character  | boredomrating                                                |
+| effort        | character  | effortrating                                                 |
+| fatigue       | character  | fatiguerating                                                |
+| frustrate     | character  | frustrationrating                                            |
+| mentaldemand  | character  | mentaldemandrating                                           |
+| session       | character  | sessionnumber(1,2)                                           |
 
 End of documentation.
 

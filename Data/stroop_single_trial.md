@@ -1,6 +1,6 @@
 A GitHub flavored Markdown textfile documenting a dataset.
 
-Generated using docdata package on 2019-12-08 14:02:14.
+Generated using docdata package on 2019-12-08 17:55:29.
 To cite this package, type citations("docdata") in console.
 
 ## Data source
@@ -27,15 +27,15 @@ stroop_single_trial.csv
 * Rows: 246600
 * Columns: 7
 
-| Column     | Type      | Description                                                  |
-| ---------- | --------- | ------------------------------------------------------------ |
-| pNo        | character | participant id                                               |
-| condition  | character | experimental condition (control/low demand, deplete/high demand) |
-| study      | integer   | study number (1, 2, 3, 4)                                    |
-| trialnum   | integer   | trial number                                                 |
-| congruency | character | Stroop congruency (congruent, incongruent)                   |
-| acc        | numeric   | accuracy (0: error, 1: correct)                              |
-| rt         | numeric   | reaction time (seconds)                                      |
+| Column      | Type       | Description                                                  |
+| ----------- | ---------- | ------------------------------------------------------------ |
+| pNo         | character  | participantid                                                |
+| condition   | character  | experimentalcondition(control/lowdemand,deplete/highdemand)  |
+| study       | character  | studynumber(1,2,3,4)                                         |
+| trialnum    | character  | trialnumber                                                  |
+| congruency  | character  | Stroopcongruency(congruent,incongruent)                      |
+| acc         | character  | accuracy(0:error,1:correct)                                  |
+| rt          | character  | reactiontime(seconds)                                        |
 
 End of documentation.
 

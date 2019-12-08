@@ -1,6 +1,6 @@
 A GitHub flavored Markdown textfile documenting a dataset.
 
-Generated using docdata package on 2019-12-08 14:01:44.
+Generated using docdata package on 2019-12-08 17:55:00.
 To cite this package, type citations("docdata") in console.
 
 ## Data source
@@ -27,17 +27,17 @@ ddm.csv
 * Rows: 2744
 * Columns: 9
 
-| Column       | Type      | Description                                                  |
-| ------------ | --------- | ------------------------------------------------------------ |
-| study        | integer   | study number (1, 2, 3, 4)                                    |
-| session      | integer   | session number (1, 2)                                        |
-| pNo          | character | participant id                                               |
-| condition    | character | experimental condition (control/low demand, deplete/high demand) |
-| congruency   | character | Stroop congruency (congruent, incongruent)                   |
-| sessionOrder | character | order of experimental condition assignment                   |
-| a            | numeric   | EZ-diffusion boundary parameter                              |
-| v            | numeric   | EZ-diffusion drift rate parameter                            |
-| t0_Ter       | numeric   | EZ-diffusion non-decision time parameter                     |
+| Column        | Type       | Description                                                  |
+| ------------- | ---------- | ------------------------------------------------------------ |
+| study         | character  | studynumber(1,2,3,4)                                         |
+| session       | character  | sessionnumber(1,2)                                           |
+| pNo           | character  | participantid                                                |
+| condition     | character  | experimentalcondition(control/lowdemand,deplete/highdemand)  |
+| congruency    | character  | Stroopcongruency(congruent,incongruent)                      |
+| sessionOrder  | character  | orderofexperimentalconditionassignment                       |
+| a             | character  | EZ-diffusionboundaryparameter                                |
+| v             | character  | EZ-diffusiondriftrateparameter                               |
+| t0_Ter        | character  | EZ-diffusionnon-decisiontimeparameter                        |
 
 End of documentation.
 

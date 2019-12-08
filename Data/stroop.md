@@ -1,6 +1,6 @@
 A GitHub flavored Markdown textfile documenting a dataset.
 
-Generated using docdata package on 2019-12-08 14:02:22.
+Generated using docdata package on 2019-12-08 17:55:21.
 To cite this package, type citations("docdata") in console.
 
 ## Data source
@@ -27,19 +27,19 @@ stroop.csv
 * Rows: 2744
 * Columns: 11
 
-| Column       | Type      | Description                                                  |
-| ------------ | --------- | ------------------------------------------------------------ |
-| pNo          | character | participant id                                               |
-| condition    | character | experimental condition (control/low demand, deplete/high demand) |
-| study        | numeric   | study number (1, 2, 3, 4)                                    |
-| sessionOrder | character | order of experimental condition assignment                   |
-| congruency   | character | Stroop congruency (congruent, incongruent)                   |
-| rtOverall    | numeric   | reaction time (seconds) collapsed across Stroop trial types  |
-| accOverall   | numeric   | accuracy (proportion correct) collapsed across Stroop trial types |
-| rt           | numeric   | reaction time (seconds)                                      |
-| acc          | numeric   | accuracy (proprotion correct)                                |
-| rtCorrect    | numeric   | reaction time (seconds) for correct trials                   |
-| session      | integer   | session number (1, 2)                                        |
+| Column        | Type       | Description                                                  |
+| ------------- | ---------- | ------------------------------------------------------------ |
+| pNo           | character  | participantid                                                |
+| condition     | character  | experimentalcondition(control/lowdemand,deplete/highdemand)  |
+| study         | character  | studynumber(1,2,3,4)                                         |
+| sessionOrder  | character  | orderofexperimentalconditionassignment                       |
+| congruency    | character  | Stroopcongruency(congruent,incongruent)                      |
+| rtOverall     | character  | reactiontime(seconds)collapsedacrossStrooptrialtypes         |
+| accOverall    | character  | accuracy(proportioncorrect)collapsedacrossStrooptrialtypes   |
+| rt            | character  | reactiontime(seconds)                                        |
+| acc           | character  | accuracy(proprotioncorrect)                                  |
+| rtCorrect     | character  | reactiontime(seconds)forcorrecttrials                        |
+| session       | character  | sessionnumber(1,2)                                           |
 
 End of documentation.
 
