@@ -25,3 +25,6 @@ If you have questions related to anything in this repository, raise an issue [he
 
 * [Exploratory preregistered analyses (diffusion model for conflict tasks)](https://osf.io/7qcxa)
 
+### Supplements
+
+* Supplementary materials for paper
