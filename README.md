@@ -4,7 +4,7 @@ This repository contains stuff for the following paper: **"Strong effort manipul
 
 If you're planning to run the analysis scripts in the Code directory, I strongly recommend you **clone or download this ENTIRE repository**.
 
-If you have questions related to anything in this repository, raise an issue [here](https://github.com/hauselin/depletion_bayes/issues). If you have questions related to the results, read the paper first.
+If you have questions related to anything in this repository, raise an issue [here](https://github.com/hauselin/depletion_bayes/issues). If you have questions related to the results, read the [paper](https://www.hauselin.com/attachments/publications/Lin2019PsySci.pdf) first.
 
 ### Code
 
