@@ -6,7 +6,7 @@ Note: The `pNo` variable in all datasets refers to the participant ID. For studi
 
 ## Datasets
 
-There are four datasets (``.csv` files). For each one, refer to the corresponding markdown (`.md` file) for more details.
+There are four datasets (`.csv` files). For each one, refer to the corresponding markdown (`.md` file) for more details.
 
 * `ddm.csv`: EZ-ddm (drift-diffusion model) dataset
 * `ratings.csv`: Ratings/phenomenology dataset with boundary and drift rate parameters
