@@ -2,7 +2,9 @@
 
 Repository URL: https://github.com/hauselin/depletion_bayes
 
-This repository contains stuff for the following [paper](https://www.hauselin.com/attachments/publications/Lin2019PsySci.pdf): Lin, H., Saunders, B., Friese, M., Evans, N.J., & Inzlicht, M. (accepted). Strong effort manipulations reduce response caution: A preregistered reinvention of the ego-depletion paradigm. Psychological Science. [https://psyarxiv.com/dysa5](https://psyarxiv.com/dysa5)
+This repository contains stuff for the following paper: 
+
+Lin, H., Saunders, B., Friese, M., Evans, N. J., & Inzlicht, M. (2020). Strong effort manipulations reduce response caution: A preregistered reinvention of the ego-depletion paradigm. Psychological Science, 1-17. doi:[10.1177/0956797620904990](https://journals.sagepub.com/doi/10.1177/0956797620904990)
 
 If you're planning to run the analysis scripts in the Code directory, I strongly recommend you **clone or download this ENTIRE repository**.
 
