@@ -9,5 +9,9 @@ demand_low_video.mp4
 demand_high_task
 
 * directory containing code and stimuli for running the high demand experimental manipulation
-* note also that we're currently writing a Python version of this task that can be run on PsychoPy
 
+
+
+outcome_task_Stroop
+
+* directory containing code for running the outcome task (Stroop task)
