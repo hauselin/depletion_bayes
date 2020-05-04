@@ -1,0 +1,511 @@
+﻿#Stroop Task (4 colors)
+
+#Inquisit expressions (functions)
+http://www.millisecond.com/support/docs/v4/html/language/expressions/functions.htm
+
+#Default settings
+<defaults>
+/ screencolor = black
+/ fontstyle = ("Arial", 4%, false, false, false, false)
+/ txbgcolor = black
+/ txcolor = black
+/ inputdevice = keyboard
+/ canvasaspectratio = (4.5, 3)
+/ halign = center
+/ valign = center
+</defaults>
+
+<monkey>
+/latencydistribution = normal(1000, 500)
+</monkey>
+
+#Expressions to compute:
+congruentlatency: RT for congruent trials
+incongruentlatency: RT for incongruent trials
+meanRTcorr_congruent: mean RT for correct congruent trials
+meanRTcorr_incongruent: mean RT for correct incongruent trials
+congruentcorrect: percent correct for congruent trials
+incongruentcorrect: percent correct for incongruent trials
+<expressions>
+/ congruentlatency = meanlatency(trial.redcongruent, trial.bluecongruent, trial.yellowcongruent)
+/ incongruentlatency = meanlatency(trial.redincongruent, trial.blueincongruent, trial.yellowincongruent)
+/ meanRTcorr_congruent = values.sumrt_congruent/values.countcorrect_congruent
+/ meanRTcorr_incongruent = values.sumrt_incongruent/values.countcorrect_incongruent
+/ congruentcorrect = percentcorrect(trial.redcongruent, trial.bluecongruent, trial.yellowcongruent)
+/ incongruentcorrect = percentcorrect(trial.redincongruent, trial.blueincongruent, trial.yellowincongruent)
+</expressions>
+
+#total trial duration (response time + pause)
+/items = (1800, 1900, 2000, 2100, 2200)
+<list trialdurations>
+/items = (2000)
+/resetinterval = 0
+/replace = true
+/selectionmode = random
+</list>
+
+#Values
+<values>
+/ completed = 0
+/ congruency = 0
+/ itipause = 0
+/ totaltrialtime = 0
+/ trialduration = 0
+/ feedback = 0
+</values>
+
+<values>
+/ count_congruent = 0
+/ countcorrect_congruent = 0
+/ sumrt_congruent = 0
+/ count_incongruent = 0
+/ countcorrect_incongruent = 0
+/ sumrt_incongruent = 0
+</values>
+
+<values>
+/ completioncode = 0
+</values>
+
+#Raw data
+<data> 
+/ file = "Study7StroopRaw.iqdat"
+/ separatefiles = true
+/ columns = [build date time subject group blockcode blocknum trialcode trialnum values.congruency stimulusitem response correct latency values.itipause values.totaltrialtime
+			expressions.congruentlatency
+			expressions.incongruentlatency 
+			expressions.meanRTcorr_congruent
+			expressions.meanRTcorr_incongruent
+			expressions.congruentcorrect
+			expressions.incongruentcorrect]
+</data>
+
+#Summary data
+<summarydata>
+/ file = "Study7StroopSummary.iqdat"
+/ columns = [script.startdate, script.starttime, script.subjectid, script.groupid, script.elapsedtime,
+			values.completed,
+			values.count_congruent,
+			values.count_incongruent,
+			values.countcorrect_congruent,
+			values.countcorrect_incongruent,
+			expressions.congruentlatency,
+			expressions.incongruentlatency,
+			expressions.meanRTcorr_congruent,
+			expressions.meanRTcorr_incongruent,
+			expressions.congruentcorrect,
+			expressions.incongruentcorrect]
+</summarydata>
+
+<instruct>
+/windowsize = (60%, 80%)
+/ screencolor = black
+/txcolor = (white)
+/fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/finishlabel = "Press SPACE to continue"
+/nextkey = (57)
+/nextlabel = "Press SPACE to continue"
+/prevkey = (48)
+/prevlabel = "Press B to go back"
+</instruct>
+
+<page stroopinstructions1>
+^You'll see color words and you'll have to indicate the color in which each word is printed.
+
+^^Place the first three fingers of your dominant hand on V, B, N on the keyboard. 
+
+^^V for words in the color red
+^B for words in the color blue
+^N for words in the color yellow
+
+^^For example, if you see the word red printed in the color yellow, press N on the keyboard.
+</page>
+
+<page stroopinstructions2>
+^Now you'll try a few practice trials.
+^Place the first three fingers of your dominant hand on V, B, N on the keyboard.
+^^Respond as QUICKLY and ACCURATELY as possible.
+</page>
+
+
+<page stroopinstructions3>
+^You've just completed several practice trials.
+^You'll now begin the actual task.
+
+^^Remember to place the first three fingers of your dominant hand on V, B, N on the keyboard.
+^^No accuracy feedback will be provided.
+^^Respond as QUICKLY and ACCURATELY as possible. A response is required for each question.
+</page>
+
+<page stroopend>
+^You've completed this task. 
+^^To continue, please return to the previous online survey page.
+</page>
+
+#Stimuli
+<text wrongresponse>
+/ items = ("Wrong!")
+/ txcolor = darkgray
+/ position = (50, 50)
+/ fontstyle = ("Arial", 6%, false, false, false, false, 5, 0)
+</text>
+
+<trial wrongresponse> 
+/ trialduration = 1000
+/ stimulustimes = [1 = wrongresponse]
+</trial>
+
+<text tooslow>
+/ items = ("Try going faster next time.")
+/ position = (50, 50)
+/ txcolor = darkgray
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+</text>
+
+<trial tooslow> 
+/ trialduration = 2000
+/ stimulustimes = [1 = tooslow]
+</trial>
+
+<text respondfaster>
+/ items = ("Respond faster!")
+/ position = (50, 50)
+/ txcolor = darkgray
+/ fontstyle = ("Arial", 5%, false, false, false, false, 5, 0)
+</text>
+
+<text responserequired>
+/ items = ("Too slow! Response required.")
+/ position = (50, 50)
+/ txcolor = darkgray
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+</text>
+
+<text pressB>
+/ items = ("Press B (blue)")
+/ position = (50, 80)
+/ txcolor = darkgray
+/ fontstyle = ("Arial", 3%, true, false, false, false, 5, 0)
+</text>
+
+<text pressV>
+/ items = ("Press V (red)")
+/ position = (50, 80)
+/ txcolor = darkgray
+/ fontstyle = ("Arial", 3%, true, false, false, false, 5, 0)
+</text>
+
+<text pressN>
+/ items = ("Press N (yellow)")
+/ position = (50, 80)
+/ txcolor = darkgray
+/ fontstyle = ("Arial", 3%, true, false, false, false, 5, 0)
+</text>
+
+<shape blankbox>
+/color = black
+/shape = rectangle
+/position = (50, 50)
+/size = (80%, 30%)
+</shape>
+
+<text redreminder>
+/ items = ("V: red")
+/ position = (35%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ erase = false
+/ txcolor = darkgray
+</text>
+
+<text bluereminder>
+/ items = ("B: blue")
+/ position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ erase = false
+/ txcolor = darkgray
+</text>
+
+<text yellowreminder>
+/ items = ("N: yellow")
+/ position = (65%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ erase = false
+/ txcolor = darkgray
+</text>
+
+<text redcongruent>
+/ items = ("red")
+/ color = red
+/ fontstyle = ("Arial", 10%, true, false, false, false)
+</text>
+
+<text redincongruent>
+/ items = ("blue", "yellow")
+/ color = red
+/ fontstyle = ("Arial", 10%, true, false, false, false)
+</text>
+
+<text bluecongruent>
+/ items = ("blue")
+/ color = blue
+/ fontstyle = ("Arial", 10%, true, false, false, false)
+</text>
+
+<text blueincongruent>
+/ items = ("red", "yellow")
+/ color = blue
+/ fontstyle = ("Arial", 10%, true, false, false, false)
+</text>
+
+<text yellowcongruent>
+/ items = ("yellow")
+/ color = yellow
+/ fontstyle = ("Arial", 10%, true, false, false, false)
+</text>
+
+<text yellowincongruent>
+/ items = ("red", "blue")
+/ color = yellow
+/ fontstyle = ("Arial", 10%, true, false, false, false)
+</text>
+
+#Trials
+/ trialduration = list.trialdurations.nextvalue
+/ ontrialend = [if (trial.redcongruent.correct) {values.countcorrect_congruent += 1; values.sumrt_congruent += trial.redcongruent.latency}]
+<trial redcongruent> 
+/ ontrialbegin = [values.count_congruent += 1; values.totaltrialtime = 0]
+/ ontrialbegin = [values.congruency = 1]
+/ stimulustimes = [1 = redcongruent; 1500 = blankbox; 5000 = responserequired]
+/ correctresponse = ("v")
+/ validresponse = ("v", "b", "n")
+/ recorddata = true
+/ beginresponsetime = 0
+/ responseinterrupt = immediate
+/ ontrialend = [if (trial.redcongruent.correct && trial.redcongruent.latency <= 2000 && trial.redcongruent > 200) {values.countcorrect_congruent += 1; values.sumrt_congruent += trial.redcongruent.latency}]
+
+/ branch = [if (trial.redcongruent.error && values.feedback == 1 && trial.redcongruent.elapsedtime < 2000) {trial.wrongresponse}
+else if (trial.redcongruent.elapsedtime > 2000 && values.feedback == 1) {trial.tooslow}]
+
+/ ontrialend = [if (trial.redcongruent.latency <= 2000) {values.itipause = 2000 - trial.redcongruent.latency}
+else if (trial.redcongruent.latency > 2000) {values.itipause = 500}]
+/ ontrialend = [values.totaltrialtime = values.itipause + trial.redcongruent.latency]
+/ posttrialpause = values.itipause
+</trial>
+
+<trial redincongruent> 
+/ ontrialbegin = [values.count_incongruent += 1; values.totaltrialtime = 0]
+/ ontrialbegin = [values.congruency = 2]
+/ stimulustimes = [1 = redincongruent; 1500 = blankbox; 5000 = responserequired]
+/ correctresponse = ("v")
+/ validresponse = ("v", "b", "n")
+/ recorddata = true
+/ beginresponsetime = 0
+/ responseinterrupt = immediate
+
+/ ontrialend = [if (trial.redincongruent.correct && trial.redincongruent.latency <= 2000 && trial.redincongruent > 200) {values.countcorrect_incongruent += 1; values.sumrt_incongruent += trial.redincongruent.latency}]
+/ branch = [if (trial.redincongruent.error && values.feedback == 1 && trial.redincongruent.elapsedtime < 2000) {trial.wrongresponse}
+else if (trial.redincongruent.elapsedtime > 2000 && values.feedback == 1) {trial.tooslow}]
+
+/ ontrialend = [if (trial.redincongruent.latency <= 2000) {values.itipause = 2000 - trial.redincongruent.latency}
+else if (trial.redincongruent.latency > 2000) {values.itipause = 500}]
+/ ontrialend = [values.totaltrialtime = values.itipause + trial.redincongruent.latency]
+/ posttrialpause = values.itipause
+</trial>
+
+<trial bluecongruent> 
+/ontrialbegin = [values.count_congruent += 1; values.totaltrialtime = 0]
+/ontrialbegin = [values.congruency = 1]
+/ recorddata = true
+/ stimulustimes = [1 = bluecongruent; 1500 = blankbox; 5000 = responserequired]
+/ correctresponse = ("b")
+/ validresponse = ("v", "b", "n")
+/ beginresponsetime = 0
+/ responseinterrupt = immediate
+
+/ ontrialend = [if (trial.bluecongruent.correct && trial.bluecongruent.latency <= 2000 && trial.bluecongruent > 200) {values.countcorrect_congruent += 1; values.sumrt_congruent += trial.bluecongruent.latency}]
+/ branch = [if (trial.bluecongruent.error && values.feedback == 1 && trial.bluecongruent.elapsedtime < 2000) {trial.wrongresponse}
+else if (trial.bluecongruent.elapsedtime > 2000 && values.feedback == 1) {trial.tooslow}]
+
+/ ontrialend = [if (trial.bluecongruent.latency <= 2000) {values.itipause = 2000 - trial.bluecongruent.latency}
+else if (trial.bluecongruent.latency > 2000) {values.itipause = 500}]
+/ ontrialend = [values.totaltrialtime = values.itipause + trial.bluecongruent.latency]
+/ posttrialpause = values.itipause
+</trial>
+
+<trial blueincongruent> 
+/ontrialbegin = [values.count_incongruent += 1; values.totaltrialtime = 0]
+/ontrialbegin = [values.congruency = 2]
+/ recorddata = true
+/ stimulustimes = [1 = blueincongruent; 1500 = blankbox; 5000 = responserequired]
+/ correctresponse = ("b")
+/ validresponse = ("v", "b", "n")
+/ beginresponsetime = 0
+/ responseinterrupt = immediate
+
+/ ontrialend = [if (trial.blueincongruent.correct && trial.blueincongruent.latency <= 2000 && trial.blueincongruent > 200) {values.countcorrect_incongruent += 1; values.sumrt_incongruent += trial.blueincongruent.latency}]
+/ branch = [if (trial.blueincongruent.error && values.feedback == 1 && trial.blueincongruent < 2000) {trial.wrongresponse}
+else if (trial.blueincongruent.elapsedtime > 2000 && values.feedback == 1) {trial.tooslow}]
+
+/ ontrialend = [if (trial.blueincongruent.latency <= 2000) {values.itipause = 2000 - trial.blueincongruent.latency}
+else if (trial.blueincongruent.latency > 2000) {values.itipause = 500}]
+/ ontrialend = [values.totaltrialtime = values.itipause + trial.blueincongruent.latency]
+/ posttrialpause = values.itipause
+</trial>
+
+<trial yellowcongruent> 
+/ ontrialbegin = [values.count_congruent += 1; values.totaltrialtime = 0]
+/ ontrialbegin = [values.congruency = 1]
+/ recorddata = true
+/ stimulustimes = [1 = yellowcongruent; 1500 = blankbox; 5000 = responserequired]
+/ correctresponse = ("n")
+/ validresponse = ("v", "b", "n")
+/ beginresponsetime = 0
+/ responseinterrupt = immediate
+
+/ ontrialend = [if (trial.yellowcongruent.correct && trial.yellowcongruent.latency <= 2000 && trial.yellowcongruent > 200) {values.countcorrect_congruent += 1; values.sumrt_congruent += trial.yellowcongruent.latency}]
+/ branch = [if (trial.yellowcongruent.error && values.feedback == 1 && trial.yellowcongruent.elapsedtime < 2000) {trial.wrongresponse}
+else if (trial.yellowcongruent.elapsedtime > 2000 && values.feedback == 1) {trial.tooslow}]
+
+/ ontrialend = [if (trial.yellowcongruent.latency <= 2000) {values.itipause = 2000 - trial.yellowcongruent.latency}
+else if (trial.yellowcongruent.latency > 2000) {values.itipause = 500}]
+/ ontrialend = [values.totaltrialtime = values.itipause + trial.yellowcongruent.latency]
+/ posttrialpause = values.itipause
+</trial>
+
+
+<trial yellowincongruent> 
+/ ontrialbegin = [values.count_incongruent += 1; values.totaltrialtime = 0]
+/ ontrialbegin = [values.congruency = 2]
+/ recorddata = true
+/ stimulustimes = [1 = yellowincongruent; 1500 = blankbox; 5000 = responserequired]
+/ correctresponse = ("n")
+/ validresponse = ("v", "b", "n")
+/ beginresponsetime = 0
+/ responseinterrupt = immediate
+
+/ ontrialend = [if (trial.yellowincongruent.correct && trial.yellowincongruent.latency <= 2000 && trial.yellowincongruent > 200) {values.countcorrect_incongruent += 1; values.sumrt_incongruent += trial.yellowincongruent.latency}]
+/ branch = [if (trial.yellowincongruent.error && values.feedback == 1 && trial.yellowincongruent.elapsedtime < 2000) {trial.wrongresponse}
+else if (trial.yellowincongruent.elapsedtime > 2000 && values.feedback == 1) {trial.tooslow}]
+
+/ ontrialend = [if (trial.yellowincongruent.latency <= 2000) {values.itipause = 2000 - trial.yellowincongruent.latency}
+else if (trial.yellowincongruent.latency > 2000) {values.itipause = 500}]
+/ ontrialend = [values.totaltrialtime = values.itipause + trial.yellowincongruent.latency]
+/ posttrialpause = values.itipause
+</trial>
+
+<trial redcongruentinstruct> 
+/ stimulustimes = [1 = redcongruent, pressV]
+/ correctresponse = ("v")
+/ validresponse = ("v")
+/ beginresponsetime = 0
+</trial>
+
+<trial redincongruentinstruct> 
+/ stimulustimes = [1 = redincongruent, pressV]
+/ correctresponse = ("v")
+/ validresponse = ("v")
+/ beginresponsetime = 0
+</trial>
+
+<trial bluecongruentinstruct> 
+/ stimulustimes = [1 = bluecongruent, pressB]
+/ correctresponse = ("b")
+/ validresponse = ("b")
+/ beginresponsetime = 0
+</trial>
+
+<trial blueincongruentinstruct> 
+/ stimulustimes = [1 = blueincongruent, pressB]
+/ correctresponse = ("b")
+/ validresponse = ("b")
+/ beginresponsetime = 0
+</trial>
+
+<trial yellowcongruentinstruct> 
+/ stimulustimes = [1 = yellowcongruent, pressN]
+/ correctresponse = ("n")
+/ validresponse = ("n")
+/ beginresponsetime = 0
+</trial>
+
+<trial yellowincongruentinstruct> 
+/ stimulustimes = [1 = yellowincongruent, pressN]
+/ correctresponse = ("n")
+/ validresponse = ("n")
+/ beginresponsetime = 0
+</trial>
+
+<block stroopinstructions>
+/ trials = [1-6 = noreplace(redcongruentinstruct, redincongruentinstruct, bluecongruentinstruct, blueincongruentinstruct, yellowcongruentinstruct, yellowincongruentinstruct)]
+/ recorddata = false
+/ bgstim = (redreminder, bluereminder, yellowreminder)
+/ postinstructions = (stroopinstructions2)
+</block>
+
+
+/ errormessage = true(wrongresponse, 1000)
+<block strooppractice>
+/ onblockbegin = [values.feedback = 1]
+/ recorddata = false
+/ bgstim = (redreminder, bluereminder, yellowreminder)
+/ trials = [1-6 = noreplace(redcongruent, redincongruent, bluecongruent, blueincongruent, yellowcongruent, yellowincongruent)]
+/ postinstructions = (stroopinstructions3)
+</block>
+
+
+#120 congruent, 60 incongruent (2:1 ratio)
+/ errormessage = false
+<block stroopactual>
+/ onblockbegin = [values.count_congruent = 0; values.count_incongruent = 0;
+values.countcorrect_congruent = 0; values.countcorrect_incongruent = 0;
+values.sumrt_congruent = 0; values.sumrt_incongruent = 0; values.feedback = 0;]
+/ bgstim = (redreminder, bluereminder, yellowreminder)
+/ trials = [
+1-9 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+10-18 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+19-27 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+28-36 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+37-45= noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+46-54 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+55-63 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+64-72 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+73-81 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+82-90 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+91-99 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+100-108 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+109-117 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+118-126 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+127-135 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+136-144 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+145-153 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+154-162 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+163-171 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);
+172-180 = noreplacenorepeat(redcongruent, redcongruent, bluecongruent, bluecongruent, yellowcongruent, yellowcongruent, redincongruent, blueincongruent, yellowincongruent);]
+</block>
+
+<textbox completioncode>
+/ caption = "Your completion code/secret key is below. Use your MOUSE to select, copy, and paste it into your MTurk window to ensure payment (CTRL-C or COMMAND-C WILL NOT WORK! PLEASE USE YOUR MOUSE!). You might want to write it on a piece of paper in case the copying and pasting don't work."
+/ txcolor = white
+/ textboxsize = (50, 10)
+/ defaultresponse = values.completioncode
+</textbox>
+
+<surveypage completioncode>
+/questions = [1 = completioncode]
+/showpagenumbers = false
+/showquestionnumbers = false
+/finishlabel = "Submit"
+/recorddata = false
+</surveypage>
+
+<block completioncode>
+/trials = [1 = completioncode]
+</block>
+
+<expt>
+/ preinstructions = (stroopinstructions1)
+/ onexptbegin = [values.completioncode = floor(rand(9100, 9999))]
+/ blocks = [1 = stroopinstructions; 2 = strooppractice; 3 = stroopactual; 4 = completioncode]
+/ onexptend = [values.completed = 1]
+/ postinstructions = (stroopend)
+</expt>

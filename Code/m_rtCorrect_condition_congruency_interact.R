@@ -16,7 +16,7 @@ stroop[congruency == "incongruent", congruentEC := 0.5]
 
 
 
-# fit modelsƒ
+# fit models
 prior_coef <- expectedBeta(expected_d = -prior_informed_cohensd,
                            sd1 = stroop[condition == "control", sd(rtCorrect, na.rm = T)], # REMEMBER TO CHANGE VARIALBE!
                            sd2 = stroop[condition == "deplete", sd(rtCorrect, na.rm = T)])
